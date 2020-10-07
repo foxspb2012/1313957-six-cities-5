@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../header/header";
 
-const SignIn = () => {
+const SignInPage = () => {
   return (
     <React.Fragment>
       <div className="page page--gray page--login">
@@ -36,4 +36,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInPage;
