@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const OfferCard = (props) => {
+const CardOffer = (props) => {
   const {offer, onHover} = props;
   const {isPremium, price, title, type, rating, photos} = offer;
 
@@ -14,11 +14,10 @@ const OfferCard = (props) => {
       }}
     >
       {
-        isPremium ?
+        isPremium &&
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
-          : null
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -53,9 +52,9 @@ const OfferCard = (props) => {
   );
 };
 
-OfferCard.propTypes = {
+CardOffer.propTypes = {
   offer: PropTypes.object.isRequired,
   onHover: PropTypes.func.isRequired
 };
 
-export default OfferCard;
+export default CardOffer;

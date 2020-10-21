@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Header from "../../header/header";
 import ReviewForm from '../../review-form/review-form';
-import ReviewItem from '../../review-item/review-item';
+import ReviewsList from '../../review-list/review-list';
 
 const RoomPage = (props) => {
   const {offer, reviews} = props;
@@ -92,9 +92,7 @@ const RoomPage = (props) => {
                 <section className="property__reviews reviews">
                   <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                   <ul className="reviews__list">
-                    {reviews.map((review) =>
-                      <ReviewItem review={review} key={review.comment}/>
-                    )}
+                    <ReviewsList reviews={reviews}/>
                   </ul>
                   <ReviewForm/>
                 </section>

@@ -12,6 +12,12 @@ class CardsList extends PureComponent {
     this.handleCardsListHover = this.handleCardsListHover.bind(this);
   }
 
+  handleCardsListHover(key) {
+    this.setState({
+      activeCard: key
+    });
+  }
+
   render() {
     const {offers} = this.props;
 
@@ -26,12 +32,6 @@ class CardsList extends PureComponent {
         })}
       </div>
     );
-  }
-
-  handleCardsListHover(activeOffer) {
-    this.setState({
-      activeCard: activeOffer
-    });
   }
 }
 
