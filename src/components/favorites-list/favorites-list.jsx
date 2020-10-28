@@ -1,22 +1,32 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import CardFavorite from '../cards/card-favorite/card-favorite';
+import CardsList from '../cards/cards-list/cards-list';
+import {favoriteCardOptions} from '../../const';
 
-const FavoritesList = (props) => {
+const FavoritesCities = (props) => {
   const {offers} = props;
+  const selectedCities = [...new Set(offers.map((elem) => elem.city))];
+
   return (
-    <React.Fragment>
-      {offers.map((offer) => (
-        <CardFavorite
-          offer={offer}
-          key={offer.id}/>
-      ))}
-    </React.Fragment>
+    selectedCities.map((city) =>
+      <li className="favorites__locations-items" key={city}>
+        <div className="favorites__locations locations locations--current">
+          <div className="locations__item">
+            <a className="locations__item-link" href="#">
+              <span>{city}</span>
+            </a>
+          </div>
+        </div>
+        <div className="favorites__places">
+          <CardsList cardOptions={favoriteCardOptions} offers={offers.filter((elem) => elem.city === city)}/>
+        </div>
+      </li>
+    )
   );
 };
 
-FavoritesList.propTypes = {
-  offers: PropTypes.array.isRequired
+FavoritesCities.propTypes = {
+  offers: PropTypes.array
 };
 
-export default FavoritesList;
+export default FavoritesCities;

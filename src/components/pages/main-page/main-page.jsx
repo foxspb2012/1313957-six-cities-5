@@ -74,7 +74,9 @@ const MainPage = (props) => {
                     <option className="places__option" value="top-rated">Top rated first</option>
                   </select> */}
                 </form>
-                <CardsList offers={offers}/>
+                <div className="cities__places-list places__list tabs__content">
+                  <CardsList offers={offers}/>
+                </div>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
