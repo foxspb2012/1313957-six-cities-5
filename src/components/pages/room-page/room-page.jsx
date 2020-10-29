@@ -9,9 +9,7 @@ import Map from '../../map/map';
 import {nearbyCardOptions} from '../../../const';
 
 const RoomPage = (props) => {
-  const {offers, reviews} = props;
-  const offer = offers.find((elem) => elem.id.toString() === props.match.params.id);
-  const review = reviews.find((elem) => elem.id.toString() === props.match.params.id);
+  const {offer, offers, review} = props;
   const {title, description, type, price, rating, isPremium, bedroomsCount, guestsMaxCount, features, photos, host} = offer;
   return (
     <React.Fragment>
@@ -92,14 +90,7 @@ const RoomPage = (props) => {
                   </div>
                 </div>
                 <section className="property__reviews reviews">
-                  {review &&
-                  <React.Fragment>
-                    <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{review.comments.length}</span></h2>
-                    <ul className="reviews__list">
-                      <ReviewsList reviews={review.comments}/>
-                    </ul>
-                  </React.Fragment>
-                  }
+                  {review && <ReviewsList reviews={review.comments}/>}
                   <ReviewForm/>
                 </section>
               </div>
@@ -123,9 +114,9 @@ const RoomPage = (props) => {
 };
 
 RoomPage.propTypes = {
+  offer: PropTypes.object.isRequired,
   offers: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
-  match: PropTypes.object.isRequired
+  review: PropTypes.object.isRequired,
 };
 
 export default RoomPage;

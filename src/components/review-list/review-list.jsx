@@ -6,9 +6,12 @@ const ReviewsList = (props) => {
   const {reviews} = props;
   return (
     <React.Fragment>
-      {reviews.map((review) =>
-        <ReviewItem review={review} key={review.comment}/>
-      )}
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+      <ul className="reviews__list">
+        {reviews.map((review) =>
+          <ReviewItem review={review} key={review.comment}/>
+        )}
+      </ul>
     </React.Fragment>
   );
 };

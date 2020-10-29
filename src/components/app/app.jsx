@@ -14,7 +14,10 @@ const App = (props) => {
         <Route exact path="/" render={() => <MainPage offers = {offers}/>}/>
         <Route exact path="/login" component={SignInPage} />
         <Route exact path='/favorites' render={() => <FavoritesPage offers={offers.filter((offer) => offer.isFavorite)}/>}/>
-        <Route exact path='/offer/:id' render={(prop) => <RoomPage {...prop} offers={offers} reviews={reviews}/>}/>
+        <Route exact path='/offer/:id' render={(prop) => <RoomPage {...prop} offers={offers}
+          offer={offers.find((elem) => elem.id.toString() === prop.match.params.id)}
+          review={reviews.find((elem) => elem.id.toString() === prop.match.params.id)}
+        />}/>
         <Redirect to="/"/>
       </Switch>
     </BrowserRouter>
