@@ -2,26 +2,28 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const CardOffer = (props) => {
-  const {offer, onHover} = props;
-  const {isPremium, price, title, type, rating, photos} = offer;
+const Card = (props) => {
+  const {cardOptions, offer, onHover} = props;
+  const {cardClassName, isPremiumMark, imageWrapperName, imageStyle, bookmarkCode} = cardOptions;
+  const {id, title, type, price, rating, isPremium, photos} = offer;
 
   return (
-    <article
-      className="cities__place-card place-card"
+    <article className={`place-card ${cardClassName}`}
       onMouseEnter={() => {
-        onHover(offer);
+        if (onHover) {
+          onHover(offer);
+        }
       }}
     >
       {
-        isPremium &&
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>
+        !isPremiumMark && isPremium &&
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
       }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`place-card__image-wrapper ${imageWrapperName}`}>
         <a href="#">
-          <img className="place-card__image" src={photos[0]} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={photos[0]} width={imageStyle.width} height={imageStyle.height} alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -34,7 +36,7 @@ const CardOffer = (props) => {
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <span className="visually-hidden">{`${bookmarkCode} bookmarks`}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
@@ -44,7 +46,7 @@ const CardOffer = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="/offer/2">{title}</Link>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -52,9 +54,10 @@ const CardOffer = (props) => {
   );
 };
 
-CardOffer.propTypes = {
+Card.propTypes = {
+  cardOptions: PropTypes.object,
   offer: PropTypes.object.isRequired,
-  onHover: PropTypes.func.isRequired
+  onHover: PropTypes.func,
 };
 
-export default CardOffer;
+export default Card;

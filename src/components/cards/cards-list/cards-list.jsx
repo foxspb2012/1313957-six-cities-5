@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import CardOffer from '../card-offer/card-offer';
+import Card from '../card-offer/card-offer';
+import {mainCardOptions} from '../../../const';
 
 class CardsList extends PureComponent {
   constructor(props) {
@@ -9,12 +10,12 @@ class CardsList extends PureComponent {
       activeCard: null
     };
 
-    this.handleCardsListHover = this.handleCardsListHover.bind(this);
+    this.handleOfferCardHover = this.handleOfferCardHover.bind(this);
   }
 
-  handleCardsListHover(key) {
+  handleOfferCardHover(activeOffer) {
     this.setState({
-      activeCard: key
+      activeCard: activeOffer
     });
   }
 
@@ -22,21 +23,20 @@ class CardsList extends PureComponent {
     const {offers} = this.props;
 
     return (
-      <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => {
-          return <CardOffer
-            key={offer.id}
-            offer={offer}
-            onHover={this.handleCardsListHover}
-          />;
-        })}
-      </div>
+      offers.map((offer) => {
+        return <Card
+          cardOptions={mainCardOptions}
+          offer={offer}
+          onHover={this.handleOfferCardHover}
+          key={offer.id}
+        />;
+      })
     );
   }
 }
 
 CardsList.propTypes = {
-  offers: PropTypes.array,
+  offers: PropTypes.array.isRequired
 };
 
 export default CardsList;
