@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../../header/header";
-import CitiesList from '../../cities-list/cities-list';
+import CitiesList from '../../cities/cities-list/cities-list';
 import CardsList from '../../cards/cards-list/cards-list';
 import Map from '../../map/map';
 import {connect} from 'react-redux';
@@ -10,7 +10,6 @@ import {getOffersInCity} from '../../../utils';
 
 const MainPage = (props) => {
   const {city, offers} = props;
-  const cityOffers = getOffersInCity(offers, city);
   return (
     <React.Fragment>
       <div className="page page--gray page--main">
@@ -19,16 +18,14 @@ const MainPage = (props) => {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <CitiesList/>
-              </ul>
+              <CitiesList/>
             </section>
           </div>
           <div className="cities">
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{cityOffers.length} places to stay in {city}</b>
+                <b className="places__found">{offers.length} places to stay in {city}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex="0">
@@ -51,7 +48,7 @@ const MainPage = (props) => {
                   </select> */}
                 </form>
                 <div className="cities__places-list places__list tabs__content">
-                  <CardsList offers={cityOffers}/>
+                  <CardsList offers={offers}/>
                 </div>
               </section>
               <div className="cities__right-section">
@@ -74,7 +71,7 @@ MainPage.propTypes = {
 
 const mapStateToProps = (state) => ({
   city: state.city,
-  offers: state.offers
+  offers: getOffersInCity(state.offers, state.city),
 });
 
 export {MainPage};

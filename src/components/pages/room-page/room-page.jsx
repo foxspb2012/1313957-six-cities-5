@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
 import Header from "../../header/header";
 import ReviewForm from '../../review-form/review-form';
 import ReviewsList from '../../review-list/review-list';
@@ -113,10 +114,15 @@ const RoomPage = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
 RoomPage.propTypes = {
   offer: PropTypes.object.isRequired,
   offers: PropTypes.array.isRequired,
   review: PropTypes.object.isRequired,
 };
 
-export default RoomPage;
+export {RoomPage};
+export default connect(mapStateToProps)(RoomPage);
