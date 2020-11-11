@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {CardTypeOptions} from '../../../const';
 
 const Card = (props) => {
   const {cardOptions, offer, onHover} = props;
@@ -52,6 +53,10 @@ const Card = (props) => {
       </div>
     </article>
   );
+};
+
+Card.defaultProps = {
+  cardOptions: CardTypeOptions.DEFAULT
 };
 
 Card.propTypes = {

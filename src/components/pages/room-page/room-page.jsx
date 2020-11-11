@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
 import Header from "../../header/header";
 import ReviewForm from '../../review-form/review-form';
 import ReviewsList from '../../review-list/review-list';
 import PhotosList from '../../photos-list/photos-list';
 import CardsList from '../../cards/cards-list/cards-list';
 import Map from '../../map/map';
-import {nearbyCardOptions} from '../../../const';
+import {CardTypeOptions} from '../../../const';
 
 const RoomPage = (props) => {
   const {offer, offers, review} = props;
@@ -103,7 +104,7 @@ const RoomPage = (props) => {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                <CardsList cardOptions={nearbyCardOptions} offers={offers.slice(0, 3)}/>
+                <CardsList cardOptions={CardTypeOptions.NEARBY} offers={offers.slice(0, 3)}/>
               </div>
             </section>
           </div>
@@ -113,10 +114,15 @@ const RoomPage = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
 RoomPage.propTypes = {
   offer: PropTypes.object.isRequired,
   offers: PropTypes.array.isRequired,
   review: PropTypes.object.isRequired,
 };
 
-export default RoomPage;
+export {RoomPage};
+export default connect(mapStateToProps)(RoomPage);

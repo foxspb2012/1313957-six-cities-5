@@ -6,9 +6,10 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 class Map extends PureComponent {
   constructor(props) {
     super(props);
+    this._map = null;
   }
 
-  componentDidMount() {
+  _renderMap() {
     const {offers} = this.props;
     const city = [52.38333, 4.9];
     const icon = leaflet.icon({
@@ -35,6 +36,17 @@ class Map extends PureComponent {
         .marker(offer.coords, {icon})
         .addTo(map);
     });
+
+    this._map = map;
+  }
+
+  componentDidMount() {
+    this._renderMap();
+  }
+
+  componentDidUpdate() {
+    this._map.remove();
+    this._renderMap();
   }
 
   render() {
