@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import MainPage from "../pages/main-page/main-page";

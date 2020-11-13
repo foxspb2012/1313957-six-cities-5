@@ -1,6 +1,8 @@
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  CHOOSE_OFFER: `CHOOSE_OFFER`
+  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
+  CHANGE_ACTIVE_CARD: `CHANGE_ACTIVE_CARD`,
+  RESET_ACTIVE_CARD: `RESET_ACTIVE_CARD`
 };
 
 export const ActionCreator = {
@@ -8,9 +10,15 @@ export const ActionCreator = {
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-
-  chooseOffer: (offerId) => ({
-    type: ActionType.CHOOSE_OFFER,
-    payload: offerId
+  changeSortType: (sortType) => ({
+    type: ActionType.CHANGE_SORT_TYPE,
+    payload: sortType
   }),
+  changeActiveCard: (id) => ({
+    type: ActionType.CHANGE_ACTIVE_CARD,
+    payload: id
+  }),
+  resetActiveCard: () => ({
+    type: ActionType.RESET_ACTIVE_CARD
+  })
 };
