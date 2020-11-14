@@ -11,7 +11,7 @@ class Map extends PureComponent {
   }
 
   _renderMap() {
-    const {city, offers, activeCardId} = this.props;
+    const {city='Amsterdam', offers, activeCardId=1} = this.props;
     const center = CityPoints[city.toUpperCase()];
     const iconSize = [30, 30];
     const icon = leaflet.icon({
