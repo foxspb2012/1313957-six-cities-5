@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
-import '../../../node_modules/leaflet/dist/leaflet.css';
 import {CityPoints} from '../../const';
+import '../../../node_modules/leaflet/dist/leaflet.css';
 
 class Map extends PureComponent {
   constructor(props) {
