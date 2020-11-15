@@ -7,32 +7,17 @@ export const extend = (a, b) => {
 };
 
 export const getOffersBySorting = (offers, sortType) => {
+  const offersCopy = [...offers];
   switch (sortType) {
-    case SortType.PRICE_HIGH_TO_LOW:
-      return offers.sort((a, b) => {
-        if (a.price === b.price && a.title > b.title) {
-          return 1;
-        }
-        return b.price - a.price;
-      });
-
-    case SortType.PRICE_LOW_TO_HIGH:
-      return offers.sort((a, b) => {
-        if (a.price === b.price && a.title > b.title) {
-          return 1;
-        }
-        return a.price - b.price;
-      });
-
-    case SortType.TOP_RATED_FIRST:
-      return offers.sort((a, b) => {
-        if (a.rating === b.rating && a.title > b.title) {
-          return 1;
-        }
-        return b.rating - a.rating;
-      });
-
+      case SortType.POPULAR:
+        return offersCopy;
+      case SortType. PRICE_LOW_TO_HIGH:
+        return offersCopy.sort((a, b) => a.price - b.price);
+      case SortType.PRICE_HIGH_TO_LOW:
+        return offersCopy.sort((a, b) => b.price - a.price);
+      case SortType.TOP_RATED_FIRST:
+        return offersCopy.sort((a, b) => b.rating - a.rating);
     default:
-      return offers;
+      return offersCopy;
   }
 };

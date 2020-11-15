@@ -13,36 +13,16 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      return extend(
-          state,
-          {
-            city: action.payload
-          }
-      );
+      return extend(state, {city: action.payload});
 
     case ActionType.CHANGE_SORT_TYPE:
-      return extend(
-          state,
-          {
-            sortType: action.payload
-          }
-      );
+      return extend(state,{sortType: action.payload});
 
     case ActionType.CHANGE_ACTIVE_CARD:
-      return extend(
-          state,
-          {
-            activeCardId: action.payload
-          }
-      );
+      return extend(state,{activeCardId: action.payload});
 
     case ActionType.RESET_ACTIVE_CARD:
-      return extend(
-          state,
-          {
-            activeCardId: null
-          }
-      );
+      return extend(state,{activeCardId: null});
 
     default:
       return state;
