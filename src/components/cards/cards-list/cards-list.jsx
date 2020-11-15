@@ -1,37 +1,21 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../card-offer/card-offer';
 
-class CardsList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeCard: null
-    };
+const CardsList = (props) => {
 
-    this.handleOfferCardHover = this.handleOfferCardHover.bind(this);
-  }
+  const {offers} = props;
 
-  handleOfferCardHover(activeOffer) {
-    this.setState({
-      activeCard: activeOffer
-    });
-  }
+  return (
+    offers.map((offer) => {
+      return <Card
+        offer={offer}
+        key={offer.id}
+      />;
+    })
+  );
+};
 
-  render() {
-    const {offers} = this.props;
-
-    return (
-      offers.map((offer) => {
-        return <Card
-          offer={offer}
-          onHover={this.handleOfferCardHover}
-          key={offer.id}
-        />;
-      })
-    );
-  }
-}
 
 CardsList.propTypes = {
   offers: PropTypes.array.isRequired
