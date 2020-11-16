@@ -10,8 +10,8 @@ import Map from '../../map/map';
 import {CardTypeOptions} from '../../../const';
 
 const RoomPage = (props) => {
-  const {offer, offers, review} = props;
-  const {title, description, type, price, rating, isPremium, bedroomsCount, guestsMaxCount, features, photos, host} = offer;
+  const {offer, offers, review, activeCardId} = props;
+  const {title, description, type, price, rating, isPremium, bedroomsCount, guestsMaxCount, features, photos, host, city} = offer;
   return (
     <React.Fragment>
       <div className="page">
@@ -97,7 +97,7 @@ const RoomPage = (props) => {
               </div>
             </div>
             <section className="property__map map">
-              <Map offers={offers.slice(0, 3)}/>
+             <Map city={city} offers={offers.slice(0, 3)} activeCardId={activeCardId}/>
             </section>
           </section>
           <div className="container">
@@ -116,12 +116,16 @@ const RoomPage = (props) => {
 
 const mapStateToProps = (state) => ({
   offers: state.offers,
+  city: state.city,
+  activeCardId: state.activeCardId
 });
 
 RoomPage.propTypes = {
   offer: PropTypes.object.isRequired,
   offers: PropTypes.array.isRequired,
   review: PropTypes.object.isRequired,
+  city: PropTypes.string.isRequired,
+  activeCardId: PropTypes.number,
 };
 
 export {RoomPage};
