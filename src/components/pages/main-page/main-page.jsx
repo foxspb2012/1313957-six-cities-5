@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Header from "../../header/header";
 import CitiesList from '../../cities/cities-list/cities-list';
-import CardsList from '../../cards/cards-list/cards-list';
-import SortingList from '../../sorting-list/sorting-list';
+import Announcement from '../../announcement/announcement';
+import АnnouncementEmpty from '../../announcement-empty/announcement-empty';
 import Map from '../../map/map';
 import {connect} from 'react-redux';
 import {getOffersInCity, getOffersBySorting} from '../../../utils';
@@ -15,7 +15,7 @@ const MainPage = (props) => {
     <React.Fragment>
       <div className="page page--gray page--main">
         <Header />
-        <main className="page__main page__main--index">
+        <main className={`page__main page__main--index ${!offers.length && `page__main--index-empty`}`}>
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
@@ -23,29 +23,15 @@ const MainPage = (props) => {
             </section>
           </div>
           <div className="cities">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in {city}</b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    {sortType}
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  <SortingList />
-                </form>
-                <div className="cities__places-list places__list tabs__content">
-                  <CardsList offers={offers}/>
-                </div>
-              </section>
-              <div className="cities__right-section">
+            <div className={`cities__places-container ${!offers.length && `cities__places-container--empty`} container`}>
+              {offers.length === 0 ? <АnnouncementEmpty/> : <Announcement offers={offers} city={city} sortType={sortType}/>}
+            <div className="cities__right-section">
+              {offers.length &&
                 <section className="cities__map map">
                   <Map city={city} offers={offers} activeCardId={activeCardId}/>
                 </section>
-              </div>
+              }
+            </div>
             </div>
           </div>
         </main>
