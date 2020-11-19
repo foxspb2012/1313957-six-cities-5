@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = (state) => ({
-  city: state.city
+const mapStateToProps = ({PROCESS}) => ({
+  city: PROCESS.city
 });
 
 CitiesList.propTypes = {

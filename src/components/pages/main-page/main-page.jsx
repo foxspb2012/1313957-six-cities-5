@@ -6,7 +6,7 @@ import Announcement from '../../announcement/announcement';
 import АnnouncementEmpty from '../../announcement-empty/announcement-empty';
 import Map from '../../map/map';
 import {connect} from 'react-redux';
-import {getOffersInCity, getOffersBySorting} from '../../../utils';
+import {getCity, getSortType, getOffersInCityBySortType, getActiveCardId} from '../../../store/selectors';
 
 
 const MainPage = (props) => {
@@ -48,10 +48,10 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  city: state.city,
-  offers: getOffersBySorting(getOffersInCity(state.offers, state.city), state.sortType),
-  sortType: state.sortType,
-  activeCardId: state.activeCardId
+  city: getCity(state),
+  offers: getOffersInCityBySortType(state),
+  sortType: getSortType(state),
+  activeCardId: getActiveCardId(state)
 });
 
 export {MainPage};

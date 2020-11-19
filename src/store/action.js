@@ -2,7 +2,8 @@ export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
   CHANGE_ACTIVE_CARD: `CHANGE_ACTIVE_CARD`,
-  RESET_ACTIVE_CARD: `RESET_ACTIVE_CARD`
+  RESET_ACTIVE_CARD: `RESET_ACTIVE_CARD`,
+  LOAD_OFFERS: `LOAD_OFFERS`,
 };
 
 export const ActionCreator = {
@@ -20,5 +21,9 @@ export const ActionCreator = {
   }),
   resetActiveCard: () => ({
     type: ActionType.RESET_ACTIVE_CARD
+  }),
+  loadOffers: (offers) => ({
+    type: ActionType.LOAD_OFFERS,
+    payload: offers
   })
 };

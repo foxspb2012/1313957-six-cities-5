@@ -11,9 +11,9 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" render={() => <MainPage offers = {offers}/>}/>
+        <Route exact path="/" render={() => <MainPage />}/>
         <Route exact path="/login" component={SignInPage} />
-        <Route exact path='/favorites' render={() => <FavoritesPage offers={offers.filter((offer) => offer.isFavorite)}/>}/>
+        <Route exact path='/favorites' render={() => <FavoritesPage />}/>
         <Route exact path='/offer/:id' render={(prop) => <RoomPage {...prop} offers={offers}
           offer={offers.find((elem) => elem.id.toString() === prop.match.params.id)}
           review={reviews.find((elem) => elem.id.toString() === prop.match.params.id)}

@@ -1,23 +1,33 @@
-import {SortType} from './const';
-
-export const getOffersInCity = (offers, city) => offers.filter((offer) => offer.city === city);
-
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export const getOffersBySorting = (offers, sortType) => {
-  const offersCopy = [...offers];
-  switch (sortType) {
-      case SortType.POPULAR:
-        return offersCopy;
-      case SortType. PRICE_LOW_TO_HIGH:
-        return offersCopy.sort((a, b) => a.price - b.price);
-      case SortType.PRICE_HIGH_TO_LOW:
-        return offersCopy.sort((a, b) => b.price - a.price);
-      case SortType.TOP_RATED_FIRST:
-        return offersCopy.sort((a, b) => b.rating - a.rating);
-    default:
-      return offersCopy;
-  }
+export const adaptToClient = (offer) => {
+  const adaptedOffer = Object.assign(
+      {},
+      offer,
+      {
+        previewImage: offer.preview_image,
+        isFavorite: offer.is_favorite,
+        isPremium: offer.is_premium,
+        guestsMaxCount: offer.max_adults,
+        host: Object.assign(
+            {},
+            offer.host,
+            {
+              avatar: offer.host.avatar_url,
+              isPro: offer.host.is_pro
+            }
+        )
+      }
+  );
+
+  delete adaptedOffer.preview_image;
+  delete adaptedOffer.is_favorite;
+  delete adaptedOffer.is_premium;
+  delete adaptedOffer.max_adults;
+  delete adaptedOffer.host.avatar_url;
+  delete adaptedOffer.host.is_pro;
+
+  return adaptedOffer;
 };
