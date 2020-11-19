@@ -23,8 +23,8 @@ const SortingList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  activeSortType: state.sortType
+const mapStateToProps = ({PROCESS}) => ({
+  activeSortType: PROCESS.sortType
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -8,10 +8,11 @@ import PhotosList from '../../photos-list/photos-list';
 import CardsList from '../../cards/cards-list/cards-list';
 import Map from '../../map/map';
 import {CardTypeOptions} from '../../../const';
+import {getCity, getOffers, getActiveCardId} from '../../../store/selectors';
 
 const RoomPage = (props) => {
   const {offer, offers, review, activeCardId} = props;
-  const {title, description, type, price, rating, isPremium, bedroomsCount, guestsMaxCount, features, photos, host, city} = offer;
+  const {city, title, description, type, price, rating, isPremium, bedrooms, guestsMaxCount, features, photos, host} = offer;
   return (
     <React.Fragment>
       <div className="page">
@@ -47,14 +48,14 @@ const RoomPage = (props) => {
                     <span style={{width: `${rating * 20}%`}}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">4.8</span>
+                  <span className="property__rating-value rating__value">{rating}</span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
                     {type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {bedroomsCount} Bedrooms
+                    {bedrooms} Bedrooms
                   </li>
                   <li className="property__feature property__feature--adults">
                     Max {guestsMaxCount} adults
@@ -97,7 +98,7 @@ const RoomPage = (props) => {
               </div>
             </div>
             <section className="property__map map">
-             <Map city={city} offers={offers.slice(0, 3)} activeCardId={activeCardId}/>
+             <Map city={city.name} offers={offers.slice(0, 3)} activeCardId={activeCardId}/>
             </section>
           </section>
           <div className="container">
@@ -115,9 +116,9 @@ const RoomPage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
-  city: state.city,
-  activeCardId: state.activeCardId
+  city: getCity(state),
+  offers: getOffers(state),
+  activeCardId: getActiveCardId(state)
 });
 
 RoomPage.propTypes = {

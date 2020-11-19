@@ -5,7 +5,7 @@ import {CardTypeOptions} from '../../const';
 
 const FavoritesCities = (props) => {
   const {offers} = props;
-  const selectedCities = [...new Set(offers.map((elem) => elem.city))];
+  const selectedCities = [...new Set(offers.map((elem) => elem.city.name))];;
 
   return (
     selectedCities.map((city) =>
@@ -18,7 +18,7 @@ const FavoritesCities = (props) => {
           </div>
         </div>
         <div className="favorites__places">
-          <CardsList cardOptions={CardTypeOptions.FAVORITE} offers={offers.filter((elem) => elem.city === city)}/>
+          <CardsList cardOptions={CardTypeOptions.FAVORITE} offers={offers.filter((elem) => elem.city.name === city)}/>
         </div>
       </li>
     )
