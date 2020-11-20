@@ -4,6 +4,7 @@ import {ActionCreator} from '../../../store/action';
 import {connect} from 'react-redux';
 import {Cities} from '../../../const';
 import CityPoint from '../city-point/city-point';
+import {getCity} from '../../../store/selectors';
 
 const CitiesList = (props) => {
   const {city, changeCity} = props;
@@ -29,8 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = ({PROCESS}) => ({
-  city: PROCESS.city
+const mapStateToProps = (state) => ({
+  city: getCity(state)
 });
 
 CitiesList.propTypes = {

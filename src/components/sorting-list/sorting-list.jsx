@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {SortTypes} from '../../const';
+import {getSortType} from '../../store/selectors';
 
 const SortingList = (props) => {
   const {activeSortType, changeSortType} = props;
@@ -23,8 +24,8 @@ const SortingList = (props) => {
   );
 };
 
-const mapStateToProps = ({PROCESS}) => ({
-  activeSortType: PROCESS.sortType
+const mapStateToProps = (state) => ({
+  activeSortType: getSortType(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

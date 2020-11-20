@@ -70,3 +70,7 @@ export const CityPoints = {
   DUSSELDORF: [51.22172, 6.77]
 };
 
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
