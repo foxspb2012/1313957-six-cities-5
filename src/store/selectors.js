@@ -1,5 +1,4 @@
 import {createSelector} from 'reselect';
-import {SortType} from '../const';
 import {sorting} from '../utils' 
 
 export const getCity = (state) => state.PROCESS.city;
