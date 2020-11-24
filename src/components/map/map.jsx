@@ -1,88 +1,105 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import leaflet from 'leaflet';
-import {CityPoints} from '../../const';
-import '../../../node_modules/leaflet/dist/leaflet.css';
+import Leaflet from 'leaflet';
+import * as Type from '../../prop-types';
+import {connect} from 'react-redux';
+import {getActiveOffer} from '../../store/app/selectors';
+import {getOfferLocationActive} from '../../utils';
+import {withLoad} from '../../hocs/with-load';
+
+const LAYER_URL = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`;
+const LAYER_ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`;
+const ICON_URL = `img/pin.svg`;
+const ACTIVE_ICON_URL = `img/pin-active.svg`;
+const ICON_SIZE = [27, 39];
 
 class Map extends PureComponent {
   constructor(props) {
     super(props);
     this._map = null;
-  }
-
-  _renderMarkers() {
-    const {offers, activeCardId} = this.props;
-    const iconSize = [30, 30];
-    const icon = leaflet.icon({
-      iconUrl: `./img/pin.svg`,
-      iconSize
-    });
-    const activeIcon = leaflet.icon({
-      iconUrl: `./img/pin-active.svg`,
-      iconSize
-    });
-
-    offers.forEach((offer) => {
-      const coords = [offer.location.latitude, offer.location.longitude];
-      if (offer.id === activeCardId) {
-        leaflet
-        .marker(coords, {icon: activeIcon})
-        .addTo(this._map);
-      } else {
-        leaflet
-        .marker(coords, {icon})
-        .addTo(this._map);
-      }
-    });
-  }
-
-  _renderMap() {
-    const {city} = this.props;
-    const center = CityPoints[city.toUpperCase()];
-    const zoom = 12;
-    const map = leaflet.map(`map`, {
-      zoom,
-      center,
-      zoomControl: false,
-      marker: true
-    });
-
-    this._map = map;
-
-    map.setView(center, zoom);
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(map);
-
-    this._renderMarkers();
+    this._markers = null;
   }
 
   componentDidMount() {
-    this._renderMap();
+    const {centerCoordinates} = this.props;
+
+    this._map = Leaflet.map(`map`, {
+      center: centerCoordinates.coordinates,
+      zoom: centerCoordinates.zoom,
+      zoomControl: true,
+      marker: true
+    });
+
+    Leaflet.tileLayer(LAYER_URL, {attribution: LAYER_ATTRIBUTION}).addTo(this._map);
+
+    this._updateMarkers();
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.city !== prevProps.city) {
-      this._map.remove();
-      this._renderMap();
+    const {offers, activeOffer, centerCoordinates} = this.props;
+    const isNeedUpdateCity = offers !== prevProps.offers;
+
+    if (isNeedUpdateCity) {
+      this._map.flyTo(centerCoordinates.coordinates, centerCoordinates.zoom);
     } else {
-      this._renderMarkers();
+      const coordinatesActiveOffer = getOfferLocationActive(offers, activeOffer);
+      this._map.flyTo(coordinatesActiveOffer.coordinates, coordinatesActiveOffer.zoom);
     }
+
+    this._updateMarkers();
+  }
+
+  componentWillUnmount() {
+    this._markers.forEach((marker) => marker.remove());
+    this._map.remove();
+  }
+
+  _updateMarkers() {
+    const {offers, activeOffer} = this.props;
+    const icon = Leaflet.icon({
+      iconUrl: ICON_URL,
+      iconSize: ICON_SIZE
+    });
+    const activeIcon = Leaflet.icon({
+      iconUrl: ACTIVE_ICON_URL,
+      iconSize: ICON_SIZE
+    });
+
+    if (this._markers) {
+      this._markers.forEach((marker) => marker.remove());
+    }
+
+    this._markers = offers.reduce((items, {id, location: {coordinates}}) => {
+      const pin = Leaflet
+        .marker(coordinates, {
+          icon: id === activeOffer ? activeIcon : icon,
+        });
+      items.push(pin);
+
+      return items;
+    }, []);
+
+    this._markers.forEach((marker) => marker.addTo(this._map));
   }
 
   render() {
+    const {blockClassName} = this.props;
+
     return (
-      <div id="map" style={{height: `100%`}}></div>
+      <section id="map" className={`${blockClassName}__map map`} ></section>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  activeOffer: getActiveOffer(state)
+});
+
 Map.propTypes = {
-  city: PropTypes.string,
-  offers: PropTypes.array,
-  activeCardId: PropTypes.number
+  offers: Type.OFFERS_LIST,
+  activeOffer: Type.ACTIVE_OFFER,
+  blockClassName: Type.BLOCK_CLASS_NAME,
+  centerCoordinates: Type.CITY_LOCATION,
 };
 
-export default Map;
+export {Map};
+export default connect(mapStateToProps)(withLoad(Map));

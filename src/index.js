@@ -1,33 +1,29 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import App from "./components/app/app";
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import {reviews} from './mocks/reviews';
-import rootReducer from './store/reducers/root-reducer';
+import App from './app/app';
 import thunk from 'redux-thunk';
-import {createApi} from './services/api';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {fetchOffers, checkAuth} from './store/api-actions';
-import {ActionCreator} from './store/action';
-import {AuthorizationStatus} from './const';
-import {redirect} from './store/redirect';
+import createAPI from './api.js';
+import ReactDOM from 'react-dom';
+import reducer from './store/reducer';
+import {AuthorizationStatus} from './const.js';
+import {Operation as OffersOperation} from './store/offers/offers';
+import {ActionCreator as UserActionCreator, Operation as UserOperation} from './store/user/user';
+import {createStore, compose, applyMiddleware} from 'redux'; import {Provider} from 'react-redux';
 
-const api = createApi(() => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)));
+const api = createAPI(() => store.dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.UNAUTHORIZED)));
 
-const store = createStore(rootReducer, composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument(api)),
-    applyMiddleware(redirect)
-));
+const store = createStore(
+    reducer,
+    compose(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
+);
 
-store.dispatch(fetchOffers());
-store.dispatch(checkAuth());
+store.dispatch(UserOperation.checkAuthorizationStatus());
+store.dispatch(OffersOperation.loadOffers());
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App
-      reviews={reviews}
-    />
-  </Provider>,
-  document.querySelector(`#root`)
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.querySelector(`#root`)
 );
