@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferInside render correctly Should OfferInside render correctly with features 1`] = `
+<div
+  className="property__inside"
+>
+  <h2
+    className="property__inside-title"
+  >
+    What's inside
+  </h2>
+  <ul
+    className="property__inside-list"
+  >
+    <li
+      className="property__inside-item"
+    >
+      Dishwasher
+    </li>
+    <li
+      className="property__inside-item"
+    >
+      Baby seat
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Should OfferInside render correctly Should OfferInside render correctly without features 1`] = `
+<div
+  className="property__inside"
+>
+  <h2
+    className="property__inside-title"
+  >
+    What's inside
+  </h2>
+  <ul
+    className="property__inside-list"
+  />
+</div>
+`;

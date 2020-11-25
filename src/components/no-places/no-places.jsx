@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import * as Type from '../../prop-types';
 import {getActiveCity} from '../../store/app/selectors';
 
-const NoOffers = ({activeCity}) => {
+const NoPlaces = ({activeCity}) => {
   return (
     <React.Fragment>
       <section className="cities__no-places">
@@ -23,9 +23,9 @@ const mapStateToProps = (state) => ({
   activeCity: getActiveCity(state),
 });
 
-NoOffers.propTypes = {
-  activeCity: PropTypes.string.isRequired,
+NoPlaces.propTypes = {
+  activeCity: Type.ACTIVE_CITY,
 };
 
-export {NoOffers};
-export default connect(mapStateToProps)(NoOffers);
+export {NoPlaces};
+export default connect(mapStateToProps)(NoPlaces);

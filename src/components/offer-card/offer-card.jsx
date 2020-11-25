@@ -1,44 +1,93 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
-import {upperCaseFirstLetter} from '../../utils';
 import {connect} from 'react-redux';
-import {ActionCreator as AppActionCreator} from '../../store/app/app';
+import {AppRoute} from '../../const';
 import * as Type from '../../prop-types';
+import {upperCaseFirstLetter} from '../../utils';
+import OfferMark from '../offer-mark/offer-mark';
+import StarRating from '../star-rating/star-rating';
+import OfferPrice from '../offer-price/offer-price';
+import {OffersListType} from '../offer-list/offer-list';
+import {ActionCreator as AppActionCreator} from '../../store/app/app';
+import {Operation as OffersOperation} from '../../store/offers/offers';
+import BookmarkButton, {BookmarkButtonType} from '../bookmark-btn/bookmark-btn';
+
+const TypeName = {
+  OFFER_PRICE: `place-card`,
+  RAITING_STARS: `place-card__stars`,
+  MARK: `place-card`,
+};
+
+const getClassName = (type) => {
+  switch (type) {
+    case OffersListType.MAIN:
+      return {
+        card: `cities__place-card`,
+        image: `cities__image-wrapper`,
+      };
+    case OffersListType.NEAR:
+      return {
+        card: `near-places__card`,
+        image: `near-places__image-wrapper`,
+      };
+    case OffersListType.FAVORITES:
+      return {
+        card: `favorites__card`,
+        image: `favorites__image-wrapper`,
+      };
+    default:
+      return {
+        card: ``,
+        image: ``,
+      };
+  }
+};
+
+const getImageSize = (type) => {
+  switch (type) {
+    case OffersListType.FAVORITES:
+      return {width: 150, height: 110};
+    default:
+      return {width: 260, height: 200};
+  }
+};
 
 const OfferCard = (props) => {
-
-  const {id, type, name, photos: [src], price, isPremium, onActiveOfferChange} = props;
-
-  const premiumMark = <div className="place-card__mark"><span>Premium</span></div>;
+  const {offer, typeClass, onActiveOfferChange, onOfferFavoritenessChange} = props;
+  const {id, type, name,
+    photos: [src],
+    price,
+    rating,
+    isPremium,
+    isFavorite,
+  } = offer;
+  const className = getClassName(typeClass);
+  const imageSize = getImageSize(typeClass);
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => onActiveOfferChange(id)}>
-      {isPremium && premiumMark}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`place-card ${className.card}`} onMouseEnter={() => onActiveOfferChange(id)}>
+      {isPremium && <OfferMark typeClass={TypeName.MARK}/>}
+      <div className={`place-card__image-wrapper ${className.image}`}>
         <Link to={`${AppRoute.OFFER}/${id}`}>
-          <img className="place-card__image" src={src} width="260" height="200" alt={name} />
+          <img className="place-card__image" src={src} width={imageSize.width} height={imageSize.height} alt={name} />
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
-          <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;night</span>
-          </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <OfferPrice
+            typeClass={TypeName.OFFER_PRICE}
+            price={price}
+          />
+          <BookmarkButton
+            typeClass={BookmarkButtonType.OFFER_ITEM}
+            isActive={isFavorite}
+            onClick={() => onOfferFavoritenessChange(id, isFavorite)}
+          />
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <StarRating
+          typeClass={TypeName.RAITING_STARS}
+          value={rating}
+        />
         <h2 className="place-card__name">
           <Link to={`${AppRoute.OFFER}/${id}`}>{name}</Link>
         </h2>
@@ -48,19 +97,17 @@ const OfferCard = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onActiveOfferChange: (activeOffer) => dispatch(AppActionCreator.setActiveOffer(activeOffer))
-});
-
 OfferCard.propTypes = {
-  id: Type.ID,
-  isPremium: Type.OFFER_IS_PREMIUM,
-  name: Type.OFFER_NAME,
-  photos: Type.OFFER_IMAGES,
-  price: Type.OFFER_PRICE,
-  type: Type.OFFER_TYPE,
+  offer: Type.OFFER,
+  typeClass: Type.TYPE_NAME,
   onActiveOfferChange: Type.FUNCTION,
+  onOfferFavoritenessChange: Type.FUNCTION,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onActiveOfferChange: (activeOffer) => dispatch(AppActionCreator.setActiveOffer(activeOffer)),
+  onOfferFavoritenessChange: (offerId, status) => dispatch(OffersOperation.toggleFavoriteness(offerId, status)),
+});
 
 export {OfferCard};
 export default connect(null, mapDispatchToProps)(OfferCard);

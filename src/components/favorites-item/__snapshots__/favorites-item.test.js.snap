@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should FavoritesItem render correctly Should FavoritesItem render correctly when no offers 1`] = `
+<li
+  className="favorites__locations-items"
+>
+  <div
+    className="favorites__locations locations locations--current"
+  >
+    <div
+      className="locations__item"
+    >
+      <a
+        className="locations__item-link"
+        href="#"
+      >
+        <span />
+      </a>
+    </div>
+  </div>
+  <div
+    className="favorites__places"
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "column",
+          "fontSize": "38px",
+          "fontStyle": "oblique",
+          "fontWeight": 700,
+          "justifyContent": "flex-start",
+          "lineHeight": 0.7,
+          "margin": "20px",
+          "padding": "30px",
+          "textAlign": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <h3
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <img
+          alt="logo"
+          height="50"
+          src="/img/logo.svg"
+          style={
+            Object {
+              "marginRight": "20px",
+            }
+          }
+          width="100"
+        />
+        <svg
+          height="100%"
+          version="1.1"
+          width="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <path
+            id="path"
+          >
+            <animate
+              attributeName="d"
+              begin="0s"
+              dur="3s"
+              from="m0,110 h0"
+              repeatCount="indefinite"
+              to="m0,110 h1100"
+            />
+          </path>
+          <text
+            fill="black"
+          >
+            <textPath
+              xlinkHref="#path"
+            >
+              Loading...
+            </textPath>
+          </text>
+        </svg>
+      </h3>
+    </div>
+  </div>
+</li>
+`;
+
+exports[`Should FavoritesItem render correctly Should FavoritesItem render correctly with offers 1`] = `
+<li
+  className="favorites__locations-items"
+>
+  <div
+    className="favorites__locations locations locations--current"
+  >
+    <div
+      className="locations__item"
+    >
+      <a
+        className="locations__item-link"
+        href="#"
+      >
+        <span>
+          Paris
+        </span>
+      </a>
+    </div>
+  </div>
+  <div
+    className="favorites__places"
+  >
+    <div
+      className="favorites__places"
+    />
+  </div>
+</li>
+`;

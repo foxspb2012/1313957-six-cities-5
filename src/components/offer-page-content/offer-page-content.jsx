@@ -1,15 +1,21 @@
 import React from 'react';
 import * as Type from '../../prop-types';
+import Reviews from '../reviews/reviews';
 import {withLoad} from '../../hocs/with-load';
 import OfferMark from '../offer-mark/offer-mark';
 import OfferHost from '../offer-host/offer-host';
-import ReviewList from '../review-list/review-list';
 import StarRating from '../star-rating/star-rating';
 import OfferPrice from '../offer-price/offer-price';
 import OfferHeader from '../offer-header/offer-header';
 import OfferInside from '../offer-inside/offer-inside';
 import OfferGallery from '../offer-gallery/offer-gallery';
 import OfferFeatures from '../offer-features/offer-features';
+
+const TypeName = {
+  OFFER_PRICE: `property`,
+  RAITING_STARS: `property__stars`,
+  MARK: `property`,
+};
 
 const OfferPageContent = ({offer}) => {
   const {photos, isPremium, name, isFavorite, rating, type, bedroomAmount, guestAmount, price, features, host, description} = offer;
@@ -19,24 +25,29 @@ const OfferPageContent = ({offer}) => {
       <OfferGallery photos={photos}/>
       <div className="property__container container">
         <div className="property__wrapper">
-          {isPremium && <OfferMark/>}
+          {isPremium && <OfferMark typeClass={TypeName.MARK}/>}
           <OfferHeader
             name={name}
-            isFavorite={isFavorite}/>
+            isFavorite={isFavorite}
+          />
           <StarRating
-            blockClassName={`property`}
+            typeClass={TypeName.RAITING_STARS}
             value={rating}
-            isValueShown={true}/>
+          />
           <OfferFeatures
             type={type}
             bedroomAmount={bedroomAmount}
-            guestAmount={guestAmount}/>
-          <OfferPrice price={price}/>
+            guestAmount={guestAmount}
+          />
+          <OfferPrice
+            price={price}
+            typeClass={TypeName.OFFER_PRICE}
+          />
           {features.length && <OfferInside features={features}/>}
           <OfferHost
             host={host}
             description={description} />
-          <ReviewList />
+          <Reviews/>
         </div>
       </div>
     </React.Fragment>

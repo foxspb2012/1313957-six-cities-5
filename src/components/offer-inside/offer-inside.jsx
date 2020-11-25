@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as Type from '../../prop-types';
 
-const OfferInside = ({features = []}) => {
+const renderFeatures = (features) => {
   return (
-    <div className="property__inside">
+    <>
       <h2 className="property__inside-title">What&apos;s inside</h2>
       <ul className="property__inside-list">
         {features.map((it, index) => (
@@ -12,12 +12,20 @@ const OfferInside = ({features = []}) => {
           </li>
         ))}
       </ul>
+    </>
+  );
+};
+
+const OfferInside = ({features = []}) => {
+  return (
+    <div className="property__inside">
+      {features ? renderFeatures(features) : null}
     </div>
   );
 };
 
 OfferInside.propTypes = {
-  features: PropTypes.arrayOf(PropTypes.string).isRequired
+  features: Type.OFFER_FEATURES,
 };
 
 export default OfferInside;

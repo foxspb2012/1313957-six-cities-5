@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should StarRating render correctly Should StarRating render correctly with typeClass and value 0 1`] = `
+<div
+  className="rating__stars place-card__stars"
+>
+  <span
+    style={
+      Object {
+        "width": "0%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
+
+exports[`Should StarRating render correctly Should StarRating render correctly with typeClass and value 2.5 1`] = `
+<div
+  className="rating__stars place-card__stars"
+>
+  <span
+    style={
+      Object {
+        "width": "60%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
+
+exports[`Should StarRating render correctly Should StarRating render correctly with typeClass and value 5 1`] = `
+<div
+  className="rating__stars place-card__stars"
+>
+  <span
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
+
+exports[`Should StarRating render correctly Should StarRating render correctly without typeClass and value 0 1`] = `
+<div
+  className="rating__stars undefined"
+>
+  <span
+    style={
+      Object {
+        "width": "0%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
+
+exports[`Should StarRating render correctly Should StarRating render correctly without typeClass and value 2.5 1`] = `
+<div
+  className="rating__stars undefined"
+>
+  <span
+    style={
+      Object {
+        "width": "60%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
+
+exports[`Should StarRating render correctly Should StarRating render correctly without typeClass and value 5 1`] = `
+<div
+  className="rating__stars undefined"
+>
+  <span
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+  <span
+    className="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;
