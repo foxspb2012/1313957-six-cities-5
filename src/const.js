@@ -1,76 +1,71 @@
+export const MAXIMUM_OFFERS = 3;
+
 export const OfferType = {
-  HOTEL: `Hotel`,
-  HOUSE: `House`,
-  APARTMENT: `Apartment`,
-  PRIVATE_ROOM: `Private room`,
+  APARTMENT: `apartment`,
+  HOTEL: `hotel`,
+  HOUSE: `house`,
+  ROOM: `room`,
 };
 
-export const CardTypeOptions = {
-  DEFAULT: {
-    cardClassName: `cities__place-card`,
-    isPremiumMark: false,
-    imageWrapperName: `cities__image-wrapper`,
-    imageStyle: {
-      width: `260`,
-      height: `200`
-    },
-    bookmarkPrefix: `To`
-  },
-  FAVORITE: {
-    cardClassName: `favorites__card`,
-    isPremiumMark: true,
-    imageWrapperName: `favorites__image-wrapper`,
-    imageStyle: {
-      width: `150`,
-      height: `110`
-    },
-    bookmarkPrefix: `In`
-  },
-  NEARBY: {
-    cardClassName: `near-places__card`,
-    isPremiumMark: true,
-    imageWrapperClassName: `near-places__image-wrapper`,
-    imageStyle: {
-      width: `260`,
-      height: `200`
-    },
-    bookmarkPrefix: `To`
-  }
+export const AppRoute = {
+  MAIN: `/`,
+  LOGIN: `/login`,
+  OFFER: `/offer`,
+  FAVORITES: `/favorites`,
+  NOT_FOUND: `/not-found`,
 };
 
-export const Cities = [
-  `Paris`,
-  `Cologne`,
-  `Brussels`,
-  `Amsterdam`,
-  `Hamburg`,
-  `Dusseldorf`,
-];
+export const City = {
+  PARIS: `Paris`,
+  COLOGNE: `Cologne`,
+  BRUSSELS: `Brussels`,
+  AMSTERDAM: `Amsterdam`,
+  HAMBURG: `Hamburg`,
+  DUSSELDORF: `Dusseldorf`
+};
 
-export const SortTypes = [
-  `Popular`,
-  `Price: low to high`,
-  `Price: high to low`,
-  `Top rated first`,
-];
+export const MAX_RATING = 5;
+
+export const RATING_COEFFICIENT = 20;
 
 export const SortType = {
-  POPULAR: `Popular`,
-  PRICE_LOW_TO_HIGH: `Price: low to high`,
-  PRICE_HIGH_TO_LOW: `Price: high to low`,
-  TOP_RATED_FIRST: `Top rated first`
+  POPULAR: `popular`,
+  TO_HIGH_PRICE: `price: low to high`,
+  TO_LOW_PRICE: `price: high to low`,
+  TOP_RATED: `top rated first`,
 };
 
-export const CityPoints = {
-  PARIS: [48.85341, 2.34],
-  COLOGNE: [50.93333, 6.95],
-  BRUSSELS: [50.85045, 4.35],
-  AMSTERDAM: [52.38333, 4.9],
-  HAMBURG: [53.57532, 10.01],
-  DUSSELDORF: [51.22172, 6.77]
+export const DEFAULT_CITY = City.PARIS;
+
+export const DEFAULT_SORT_TYPE = SortType.POPULAR;
+
+export const NameSpace = {
+  APP: `APP`,
+  USER: `USER`,
+  OFFERS: `OFFERS`,
+  REVIEWS: `REVIEWS`,
+};
+
+export const EMPTY_CLASS = {
+  MAIN: `page__main--index-empty`,
+  CITIES: `cities__places-container--empty`,
+};
+
+export const ERROR_TIMEOUT = 4000;
+
+export const ServerResponseStatus = {
+  OK: 200,
+  UNAUTHORIZED: 401,
+};
+
+export const ServerURL = {
+  LOGIN: `/login`,
+  OFFERS: `/hotels`,
+  FAVORITES: `/favorite`,
+  REVIEWS: `/comments`,
 };
 
 export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
+  AUTHORIZED: `AUTHORIZED`,
+  UNAUTHORIZED: `UNAUTHORIZED`,
 };
