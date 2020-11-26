@@ -88,6 +88,22 @@ const mockState = {
 };
 
 describe(`Should OfferPageContent render correctly`, () => {
+  it(`Should OfferPageContent render correctly without offer`, () => {
+    const mockStore = configureStore();
+    const store = mockStore(mockState);
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <OfferPageContent/>
+            </Router>
+          </Provider>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it(`Should OfferPageContent render correctly with offer`, () => {
     const mockStore = configureStore();
     const store = mockStore(mockState);
@@ -98,22 +114,6 @@ describe(`Should OfferPageContent render correctly`, () => {
               <OfferPageContent
                 offer={getOffersMock(1)}
               />
-            </Router>
-          </Provider>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`Should OfferPageContent render correctly without offer`, () => {
-    const mockStore = configureStore();
-    const store = mockStore(mockState);
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <Router history={history}>
-              <OfferPageContent/>
             </Router>
           </Provider>
       )

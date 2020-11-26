@@ -33,10 +33,10 @@ const Review = (props) => {
 };
 
 Review.propTypes = {
-  date: Type.REVIEW_DATE,
-  text: Type.REVIEW_TEXT,
-  rating: Type.REVIEW_RATING,
-  user: Type.REVIEW_USER
+  date: Type.REVIEW_DATE.isRequired,
+  text: Type.REVIEW_TEXT.isRequired,
+  rating: Type.REVIEW_RATING.isRequired,
+  user: Type.REVIEW_USER.isRequired,
 };
 
 export default Review;

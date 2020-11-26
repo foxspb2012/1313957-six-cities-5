@@ -10,7 +10,7 @@ const OfferMark = ({typeClass}) =>{
 };
 
 OfferMark.propTypes = {
-  typeClass: Type.TYPE_NAME,
+  typeClass: Type.TYPE_NAME.isRequired,
 };
 
 export default OfferMark;

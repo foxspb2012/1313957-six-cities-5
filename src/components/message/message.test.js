@@ -7,7 +7,7 @@ describe(`Should Message render correctly`, () => {
     const tree = renderer
       .create(
           <Message
-            title={`Text`}
+            text={`Text`}
           />
       )
       .toJSON();

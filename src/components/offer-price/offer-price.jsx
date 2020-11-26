@@ -13,8 +13,8 @@ const OfferPrice = (props) => {
 };
 
 OfferPrice.propTypes = {
-  price: Type.OFFER_PRICE,
-  typeClass: Type.TYPE_NAME
+  price: Type.OFFER_PRICE.isRequired,
+  typeClass: Type.TYPE_NAME.isRequired,
 };
 
 export default OfferPrice;

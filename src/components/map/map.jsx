@@ -90,16 +90,16 @@ class Map extends PureComponent {
   }
 }
 
+Map.propTypes = {
+  offers: Type.OFFERS_LIST.isRequired,
+  activeOffer: Type.ACTIVE_OFFER,
+  blockClassName: Type.BLOCK_CLASS_NAME.isRequired,
+  centerCoordinates: Type.CITY_LOCATION.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   activeOffer: getActiveOffer(state)
 });
-
-Map.propTypes = {
-  offers: Type.OFFERS_LIST,
-  activeOffer: Type.ACTIVE_OFFER,
-  blockClassName: Type.BLOCK_CLASS_NAME,
-  centerCoordinates: Type.CITY_LOCATION,
-};
 
 export {Map};
 export default connect(mapStateToProps)(withLoad(Map));

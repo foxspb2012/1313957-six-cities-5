@@ -20,7 +20,7 @@ const OfferFeatures = ({type, bedroomAmount, guestAmount}) => {
 };
 
 OfferFeatures.propTypes = {
-  type: Type.OFFER_TYPE,
+  type: Type.OFFER_TYPE.isRequired,
   bedroomAmount: Type.OFFER_BEDROOMS_COUNT,
   guestAmount: Type.OFFER_GUEST_COUNT,
 };

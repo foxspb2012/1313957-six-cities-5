@@ -100,24 +100,8 @@ describe(`Should OfferList render correctly`, () => {
       .create(
           <Provider store={store}>
             <Router history={history}>
-              <OfferList/>
-            </Router>
-          </Provider>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`Should OfferList render correctly with offers`, () => {
-    const mockStore = configureStore();
-    const store = mockStore(mockState);
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <Router history={history}>
               <OfferList
-                offer={getOffersMock(5)}
+                typeClass={OffersListType.FAVORITES}
               />
             </Router>
           </Provider>

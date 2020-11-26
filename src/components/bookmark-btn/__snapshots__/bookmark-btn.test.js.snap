@@ -25,7 +25,7 @@ exports[`Should BookmarkButton render correctly Should BookmarkButton render cor
 
 exports[`Should BookmarkButton render correctly Should BookmarkButton render correctly without isActive 1`] = `
 <button
-  className="undefined__bookmark-button button "
+  className="undefined__bookmark-button button undefined__bookmark-button--active"
   onClick={[Function]}
   type="button"
 >
@@ -41,7 +41,7 @@ exports[`Should BookmarkButton render correctly Should BookmarkButton render cor
   <span
     className="visually-hidden"
   >
-    To bookmarks
+    In bookmarks
   </span>
 </button>
 `;

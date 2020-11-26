@@ -31,7 +31,7 @@ const Message = (props) => {
 };
 
 Message.propTypes = {
-  text: Type.MESSAGE_TEXT,
+  text: Type.MESSAGE_TEXT.isRequired,
 };
 
 export default Message;

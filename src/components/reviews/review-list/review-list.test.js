@@ -5,9 +5,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 const NameSpace = {
-  APP: `APP`,
   USER: `USER`,
-  OFFERS: `OFFERS`,
   REVIEWS: `REVIEWS`,
 };
 
@@ -38,22 +36,6 @@ const reviewsMock = [{
 ];
 
 const mockStateWithAuthorization = {
-  [NameSpace.APP]: {
-    activeCity: `Paris`,
-    activeSortType: `popular`,
-    activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
   [NameSpace.REVIEWS]: {
     reviews: reviewsMock,
     isReviewSending: false,
@@ -66,22 +48,6 @@ const mockStateWithAuthorization = {
 };
 
 const mockStateWithNoReviews = {
-  [NameSpace.APP]: {
-    activeCity: `Paris`,
-    activeSortType: `popular`,
-    activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
   [NameSpace.REVIEWS]: {
     reviews: [],
     isReviewSending: false,

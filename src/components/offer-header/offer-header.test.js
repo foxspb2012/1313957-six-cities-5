@@ -85,6 +85,8 @@ const mockState = {
   }
 };
 
+const testing = () => {};
+
 describe(`Should OfferHeader render correctly`, () => {
   it(`Should OfferHeader render correctly with isFavorite`, () => {
     const mockStore = configureStore();
@@ -95,6 +97,7 @@ describe(`Should OfferHeader render correctly`, () => {
             <OfferHeader
               name={`Paris`}
               isFavorite={true}
+              onOfferFavoritenessChange={testing}
             />
           </Provider>
       )
@@ -112,6 +115,7 @@ describe(`Should OfferHeader render correctly`, () => {
             <OfferHeader
               name={`Paris`}
               isFavorite={false}
+              onOfferFavoritenessChange={testing}
             />
           </Provider>
       )

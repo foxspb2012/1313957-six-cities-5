@@ -25,8 +25,8 @@ const CitiesList = ({activeCity, onClick}) => (
 );
 
 CitiesList.propTypes = {
-  onClick: Type.FUNCTION,
-  activeCity: Type.ACTIVE_CITY,
+  onClick: Type.FUNCTION.isRequired,
+  activeCity: Type.ACTIVE_CITY.isRequired,
 };
 
 const mapStateToProps = (state) => ({

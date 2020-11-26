@@ -17,7 +17,7 @@ const TypeName = {
   MARK: `property`,
 };
 
-const OfferPageContent = ({offer}) => {
+const OfferPageContent = ({offer = {}}) => {
   const {photos, isPremium, name, isFavorite, rating, type, bedroomAmount, guestAmount, price, features, host, description} = offer;
 
   return (
@@ -30,10 +30,12 @@ const OfferPageContent = ({offer}) => {
             name={name}
             isFavorite={isFavorite}
           />
-          <StarRating
-            typeClass={TypeName.RAITING_STARS}
-            value={rating}
-          />
+          <div className="property__rating rating">
+            <StarRating
+              typeClass={TypeName.RAITING_STARS}
+              value={rating}
+            />
+          </div>
           <OfferFeatures
             type={type}
             bedroomAmount={bedroomAmount}
@@ -55,7 +57,7 @@ const OfferPageContent = ({offer}) => {
 };
 
 OfferPageContent.propTypes = {
-  offer: Type.OFFER,
+  offer: Type.OFFER.isRequired,
 };
 
 export default withLoad(OfferPageContent);

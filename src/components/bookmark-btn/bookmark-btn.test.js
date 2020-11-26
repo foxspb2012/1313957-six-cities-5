@@ -25,6 +25,7 @@ describe(`Should BookmarkButton render correctly`, () => {
     const tree = renderer
       .create(
           <BookmarkButton
+            isActive={true}
             typeClass={TYPE}
             onClick={testing}
           />

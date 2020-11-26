@@ -36,17 +36,17 @@ const MainContainer = ({offers, activeCity, isLoaded}) => {
   );
 };
 
+MainContainer.propTypes = {
+  offers: Type.OFFERS_LIST.isRequired,
+  activeCity: Type.ACTIVE_CITY.isRequired,
+  isLoaded: Type.FLAG.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   activeCity: getActiveCity(state),
   offers: getFilteredAndSortedOffers(state),
   isLoaded: getIsLoaded(state),
 });
-
-MainContainer.propTypes = {
-  offers: Type.OFFERS_LIST,
-  activeCity: Type.ACTIVE_CITY,
-  isLoaded: Type.FLAG,
-};
 
 export {MainContainer};
 export default connect(mapStateToProps)(MainContainer);

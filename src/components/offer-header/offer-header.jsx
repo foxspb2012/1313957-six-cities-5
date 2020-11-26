@@ -23,8 +23,8 @@ const OfferHeader = ({name, isFavorite, onOfferFavoritenessChange, offer}) => {
 };
 
 OfferHeader.propTypes = {
-  offer: Type.OFFER,
-  name: Type.OFFER_NAME,
+  offer: Type.OFFER.isRequired,
+  name: Type.OFFER_NAME.isRequired,
   isFavorite: Type.OFFER_IS_FAVORITE,
   onOfferFavoritenessChange: Type.FUNCTION,
 };

@@ -28,6 +28,8 @@ exports[`Should Message render correctly Should Message render correctly with te
   >
     Attention
   </h2>
-  <p />
+  <p>
+    Text
+  </p>
 </div>
 `;

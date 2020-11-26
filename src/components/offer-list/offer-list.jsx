@@ -39,7 +39,7 @@ const OfferList = ({typeClass, offers = []}) => {
 };
 
 OfferList.propTypes = {
-  typeClass: Type.TYPE_NAME,
+  typeClass: Type.TYPE_NAME.isRequired,
   offers: Type.OFFERS_LIST,
 };
 

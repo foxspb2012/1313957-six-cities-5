@@ -119,7 +119,518 @@ exports[`Should FavoritesItem render correctly Should FavoritesItem render corre
   >
     <div
       className="favorites__places"
-    />
+    >
+      <article
+        className="place-card favorites__card"
+        onMouseEnter={[Function]}
+      >
+        <div
+          className="place-card__mark"
+        >
+          <span>
+            Premium
+          </span>
+        </div>
+        <div
+          className="place-card__image-wrapper favorites__image-wrapper"
+        >
+          <a
+            href="/offer/1"
+            onClick={[Function]}
+          >
+            <img
+              alt="Wood and stone place"
+              className="place-card__image"
+              height={110}
+              src="img/apartment-01.jpg"
+              width={150}
+            />
+          </a>
+        </div>
+        <div
+          className="place-card__info"
+        >
+          <div
+            className="place-card__price-wrapper"
+          >
+            <div
+              className="place-card__price"
+            >
+              <b
+                className="place-card__price-value"
+              >
+                €
+                100
+              </b>
+              <span
+                className="place-card__price-text"
+              >
+                 night
+              </span>
+            </div>
+            <button
+              className="place-card__bookmark-button button place-card__bookmark-button--active"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height={19}
+                width={18}
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                In bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="rating__stars place-card__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <h2
+            className="place-card__name"
+          >
+            <a
+              href="/offer/1"
+              onClick={[Function]}
+            >
+              Wood and stone place
+            </a>
+          </h2>
+          <p
+            className="place-card__type"
+          >
+            Room
+          </p>
+        </div>
+      </article>
+      <article
+        className="place-card favorites__card"
+        onMouseEnter={[Function]}
+      >
+        <div
+          className="place-card__mark"
+        >
+          <span>
+            Premium
+          </span>
+        </div>
+        <div
+          className="place-card__image-wrapper favorites__image-wrapper"
+        >
+          <a
+            href="/offer/2"
+            onClick={[Function]}
+          >
+            <img
+              alt="Wood and stone place"
+              className="place-card__image"
+              height={110}
+              src="img/apartment-01.jpg"
+              width={150}
+            />
+          </a>
+        </div>
+        <div
+          className="place-card__info"
+        >
+          <div
+            className="place-card__price-wrapper"
+          >
+            <div
+              className="place-card__price"
+            >
+              <b
+                className="place-card__price-value"
+              >
+                €
+                100
+              </b>
+              <span
+                className="place-card__price-text"
+              >
+                 night
+              </span>
+            </div>
+            <button
+              className="place-card__bookmark-button button place-card__bookmark-button--active"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height={19}
+                width={18}
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                In bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="rating__stars place-card__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <h2
+            className="place-card__name"
+          >
+            <a
+              href="/offer/2"
+              onClick={[Function]}
+            >
+              Wood and stone place
+            </a>
+          </h2>
+          <p
+            className="place-card__type"
+          >
+            Room
+          </p>
+        </div>
+      </article>
+      <article
+        className="place-card favorites__card"
+        onMouseEnter={[Function]}
+      >
+        <div
+          className="place-card__mark"
+        >
+          <span>
+            Premium
+          </span>
+        </div>
+        <div
+          className="place-card__image-wrapper favorites__image-wrapper"
+        >
+          <a
+            href="/offer/3"
+            onClick={[Function]}
+          >
+            <img
+              alt="Wood and stone place"
+              className="place-card__image"
+              height={110}
+              src="img/apartment-01.jpg"
+              width={150}
+            />
+          </a>
+        </div>
+        <div
+          className="place-card__info"
+        >
+          <div
+            className="place-card__price-wrapper"
+          >
+            <div
+              className="place-card__price"
+            >
+              <b
+                className="place-card__price-value"
+              >
+                €
+                100
+              </b>
+              <span
+                className="place-card__price-text"
+              >
+                 night
+              </span>
+            </div>
+            <button
+              className="place-card__bookmark-button button place-card__bookmark-button--active"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height={19}
+                width={18}
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                In bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="rating__stars place-card__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <h2
+            className="place-card__name"
+          >
+            <a
+              href="/offer/3"
+              onClick={[Function]}
+            >
+              Wood and stone place
+            </a>
+          </h2>
+          <p
+            className="place-card__type"
+          >
+            Room
+          </p>
+        </div>
+      </article>
+      <article
+        className="place-card favorites__card"
+        onMouseEnter={[Function]}
+      >
+        <div
+          className="place-card__mark"
+        >
+          <span>
+            Premium
+          </span>
+        </div>
+        <div
+          className="place-card__image-wrapper favorites__image-wrapper"
+        >
+          <a
+            href="/offer/4"
+            onClick={[Function]}
+          >
+            <img
+              alt="Wood and stone place"
+              className="place-card__image"
+              height={110}
+              src="img/apartment-01.jpg"
+              width={150}
+            />
+          </a>
+        </div>
+        <div
+          className="place-card__info"
+        >
+          <div
+            className="place-card__price-wrapper"
+          >
+            <div
+              className="place-card__price"
+            >
+              <b
+                className="place-card__price-value"
+              >
+                €
+                100
+              </b>
+              <span
+                className="place-card__price-text"
+              >
+                 night
+              </span>
+            </div>
+            <button
+              className="place-card__bookmark-button button place-card__bookmark-button--active"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height={19}
+                width={18}
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                In bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="rating__stars place-card__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <h2
+            className="place-card__name"
+          >
+            <a
+              href="/offer/4"
+              onClick={[Function]}
+            >
+              Wood and stone place
+            </a>
+          </h2>
+          <p
+            className="place-card__type"
+          >
+            Room
+          </p>
+        </div>
+      </article>
+      <article
+        className="place-card favorites__card"
+        onMouseEnter={[Function]}
+      >
+        <div
+          className="place-card__mark"
+        >
+          <span>
+            Premium
+          </span>
+        </div>
+        <div
+          className="place-card__image-wrapper favorites__image-wrapper"
+        >
+          <a
+            href="/offer/5"
+            onClick={[Function]}
+          >
+            <img
+              alt="Wood and stone place"
+              className="place-card__image"
+              height={110}
+              src="img/apartment-01.jpg"
+              width={150}
+            />
+          </a>
+        </div>
+        <div
+          className="place-card__info"
+        >
+          <div
+            className="place-card__price-wrapper"
+          >
+            <div
+              className="place-card__price"
+            >
+              <b
+                className="place-card__price-value"
+              >
+                €
+                100
+              </b>
+              <span
+                className="place-card__price-text"
+              >
+                 night
+              </span>
+            </div>
+            <button
+              className="place-card__bookmark-button button place-card__bookmark-button--active"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height={19}
+                width={18}
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                In bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="rating__stars place-card__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "20%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <h2
+            className="place-card__name"
+          >
+            <a
+              href="/offer/5"
+              onClick={[Function]}
+            >
+              Wood and stone place
+            </a>
+          </h2>
+          <p
+            className="place-card__type"
+          >
+            Room
+          </p>
+        </div>
+      </article>
+    </div>
   </div>
 </li>
 `;

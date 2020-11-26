@@ -112,8 +112,8 @@ describe(`Should FavoritesItem render correctly`, () => {
           <Provider store={store}>
             <Router history={history}>
               <FavoritesItem
-                СЃityOffers={getOffersMock(5)}
                 city={`Paris`}
+                сityOffers={getOffersMock(5)}
                 isLoadedFavoritesOffers={true}
               />
             </Router>

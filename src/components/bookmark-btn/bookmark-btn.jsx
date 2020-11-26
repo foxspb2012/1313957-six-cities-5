@@ -44,9 +44,9 @@ const BookmarkButton = ({typeClass, isActive, onClick}) => {
 };
 
 BookmarkButton.propTypes = {
-  typeClass: Type.TYPE_NAME,
-  isActive: Type.FLAG,
-  onClick: Type.FUNCTION,
+  typeClass: Type.TYPE_NAME.isRequired,
+  isActive: Type.FLAG.isRequired,
+  onClick: Type.FUNCTION.isRequired,
 };
 
 export {BookmarkButtonType};

@@ -11,7 +11,7 @@ describe(`Should OfferMark render correctly`, () => {
   it(`Should OfferMark render correctly offer-page-content card typeClass`, () => {
     const tree = renderer
       .create(
-          <OfferMark typeClass={Type.OFFER_PAGE_CONTENT_CARD} />
+          <OfferMark typeClass={Type.OFFER_PAGE_CONTENT_CARD}/>
       )
       .toJSON();
 
@@ -21,7 +21,7 @@ describe(`Should OfferMark render correctly`, () => {
   it(`Should OfferMark render correctly offer card typeClass`, () => {
     const tree = renderer
       .create(
-          <OfferMark typeClass={Type.OFFER_CARD} />
+          <OfferMark typeClass={Type.OFFER_CARD}/>
       )
       .toJSON();
 

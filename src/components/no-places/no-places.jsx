@@ -19,13 +19,13 @@ const NoPlaces = ({activeCity}) => {
   );
 };
 
+NoPlaces.propTypes = {
+  activeCity: Type.ACTIVE_CITY.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   activeCity: getActiveCity(state),
 });
-
-NoPlaces.propTypes = {
-  activeCity: Type.ACTIVE_CITY,
-};
 
 export {NoPlaces};
 export default connect(mapStateToProps)(NoPlaces);

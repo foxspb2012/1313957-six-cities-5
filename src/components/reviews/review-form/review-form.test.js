@@ -5,29 +5,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 const NameSpace = {
-  APP: `APP`,
   USER: `USER`,
-  OFFERS: `OFFERS`,
   REVIEWS: `REVIEWS`,
 };
 
 const mockStateWithAuthorization = {
-  [NameSpace.APP]: {
-    activeCity: `Paris`,
-    activeSortType: `popular`,
-    activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
   [NameSpace.REVIEWS]: {
     reviews: [],
     isReviewSending: false,
@@ -40,22 +22,6 @@ const mockStateWithAuthorization = {
 };
 
 const mockStateWithIsReviewSending = {
-  [NameSpace.APP]: {
-    activeCity: `Paris`,
-    activeSortType: `popular`,
-    activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
   [NameSpace.REVIEWS]: {
     reviews: [],
     isReviewSending: true,
@@ -68,22 +34,6 @@ const mockStateWithIsReviewSending = {
 };
 
 const mockStateWithoutAuthorization = {
-  [NameSpace.APP]: {
-    activeCity: `Paris`,
-    activeSortType: `popular`,
-    activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
   [NameSpace.REVIEWS]: {
     reviews: [],
     isReviewSending: false,

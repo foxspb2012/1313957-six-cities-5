@@ -1,25 +1,22 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import * as Type from '../../prop-types';
-import {MAXIMUM_OFFERS} from '../../const';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
-import OfferList from '../../components/offer-list/offer-list';
 import {Operation as OffersOperation} from '../../store/offers/offers';
-import {getNearOffers, getOneOffer} from '../../store/offers/selectors';
 import {Operation as ReviewsOperation} from '../../store/reviews/reviews';
-import OfferPageContent from '../../components/offer-page-content/offer-page-content';
+import OfferList, {OffersListType} from '../../components/offer-list/offer-list';
 import {getIsLoadedOffer, getIsLoadedNearOffers} from '../../store/offers/selectors';
+import {getNearOffers, getMapOffers, getOneOffer} from '../../store/offers/selectors';
+import OfferPageContent from '../../components/offer-page-content/offer-page-content';
 
 class OfferPage extends PureComponent {
   componentDidMount() {
     this._update();
   }
 
-  componentDidUpdate({oldId}) {
-    const {newId} = this.props;
-
-    if (oldId !== newId) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
       this._update();
     }
   }
@@ -32,10 +29,8 @@ class OfferPage extends PureComponent {
   }
 
   render() {
-    const {nearOffers, offer, isLoadedOffer, isLoadedNearOffers} = this.props;
+    const {mapOffers, nearOffers, offer, isLoadedOffer, isLoadedNearOffers} = this.props;
     const {location} = offer;
-    const mapOffers = nearOffers.slice(0, MAXIMUM_OFFERS);
-    mapOffers.push(offer);
 
     return (
       <div className="page">
@@ -59,9 +54,10 @@ class OfferPage extends PureComponent {
                       Other places in the neighbourhood
               </h2>
               <OfferList
-                blockClassName={`near-places__list`}
+                typeClass={OffersListType.NEAR}
                 offers={nearOffers}
-                isLoaded={isLoadedNearOffers}/>
+                isLoaded={isLoadedNearOffers}
+              />
             </section>
           </div>
         </main>
@@ -71,6 +67,8 @@ class OfferPage extends PureComponent {
 }
 
 OfferPage.propTypes = {
+  id: Type.ID,
+  mapOffers: Type.OFFERS_LIST,
   offer: Type.OFFER,
   isLoadedOffer: Type.FLAG,
   isLoadedNearOffers: Type.FLAG,
@@ -83,6 +81,7 @@ OfferPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  mapOffers: getMapOffers(state),
   offer: getOneOffer(state),
   nearOffers: getNearOffers(state),
   isLoadedOffer: getIsLoadedOffer(state),

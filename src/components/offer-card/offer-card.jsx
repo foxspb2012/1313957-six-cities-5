@@ -98,10 +98,10 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  offer: Type.OFFER,
-  typeClass: Type.TYPE_NAME,
-  onActiveOfferChange: Type.FUNCTION,
-  onOfferFavoritenessChange: Type.FUNCTION,
+  offer: Type.OFFER.isRequired,
+  typeClass: Type.TYPE_NAME.isRequired,
+  onActiveOfferChange: Type.FUNCTION.isRequired,
+  onOfferFavoritenessChange: Type.FUNCTION.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

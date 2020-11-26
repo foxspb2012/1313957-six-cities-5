@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withReviewData render correctly withReviewData render correctly ReviewForm with text and rating 1`] = `null`;
+
+exports[`withReviewData render correctly withReviewData render correctly ReviewForm without text and rating 1`] = `null`;

@@ -22,7 +22,7 @@ const Reviews = (props) => {
 };
 
 Reviews.propTypes = {
-  authorizationStatus: Type.AUTHORIZATION_STATUS,
+  authorizationStatus: Type.AUTHORIZATION_STATUS.isRequired,
   lastReviews: Type.REVIEWS_LIST,
 };
 

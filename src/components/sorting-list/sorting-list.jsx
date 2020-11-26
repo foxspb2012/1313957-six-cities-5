@@ -30,6 +30,13 @@ const SortingList = ({isActive, onActiveStateChange, activeType, onTypeChange}) 
   </form>
 );
 
+SortingList.propTypes = {
+  isActive: PropTypes.bool,
+  onActiveStateChange: PropTypes.func,
+  activeType: PropTypes.string,
+  onTypeChange: PropTypes.func,
+};
+
 const mapStateToProps = (state) => ({
   activeType: getActiveSortType(state),
 });
@@ -37,13 +44,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onTypeChange: (sortType) => dispatch(AppActionCreator.setActiveSortType(sortType)),
 });
-
-SortingList.propTypes = {
-  isActive: PropTypes.bool,
-  onActiveStateChange: PropTypes.func,
-  activeType: PropTypes.string,
-  onTypeChange: PropTypes.func,
-};
 
 export {SortingList};
 export default connect(mapStateToProps, mapDispatchToProps)(withActiveState(SortingList));

@@ -94,25 +94,6 @@ const OffersListType = {
 const testing = () => {};
 
 describe(`Should OfferCard render correctly`, () => {
-  it(`Should OfferCard render correctly with offer`, () => {
-    const mockStore = configureStore();
-    const store = mockStore(mockState);
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <Router history={history}>
-              <OfferCard
-                offer={getOffersMock(1)}
-                onActiveOfferChange={testing}
-                onOfferFavoritenessChange={testing}
-              />
-            </Router>
-          </Provider>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
 
   it(`Should OfferItem render correctly with offer and favorites typeClass`, () => {
     const mockStore = configureStore();
@@ -122,7 +103,7 @@ describe(`Should OfferCard render correctly`, () => {
           <Provider store={store}>
             <Router history={history}>
               <OfferCard
-                type={OffersListType.FAVORITES}
+                typeClass={OffersListType.FAVORITES}
                 offer={getOffersMock(1)}
                 onActiveOfferChange={testing}
                 onOfferFavoritenessChange={testing}
@@ -143,7 +124,7 @@ describe(`Should OfferCard render correctly`, () => {
           <Provider store={store}>
             <Router history={history}>
               <OfferCard
-                type={OffersListType.MAIN}
+                typeClass={OffersListType.MAIN}
                 offer={getOffersMock(1)}
                 onActiveOfferChange={testing}
                 onOfferFavoritenessChange={testing}
@@ -164,7 +145,7 @@ describe(`Should OfferCard render correctly`, () => {
           <Provider store={store}>
             <Router history={history}>
               <OfferCard
-                type={OffersListType.NEAR}
+                typeClass={OffersListType.NEAR}
                 offer={getOffersMock(1)}
                 onActiveOfferChange={testing}
                 onOfferFavoritenessChange={testing}

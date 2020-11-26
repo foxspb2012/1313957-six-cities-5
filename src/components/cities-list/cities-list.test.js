@@ -6,9 +6,6 @@ import CityList from '../../components/cities-list/cities-list';
 
 const NameSpace = {
   APP: `APP`,
-  USER: `USER`,
-  OFFERS: `OFFERS`,
-  REVIEWS: `REVIEWS`,
 };
 
 const mockState = {
@@ -16,26 +13,6 @@ const mockState = {
     activeCity: `Paris`,
     activeSortType: `popular`,
     activeOffer: null
-  },
-  [NameSpace.OFFERS]: {
-    offers: [],
-    offer: {},
-    nearOffers: [],
-    favoriteOffers: [],
-    error: null,
-    isLoaded: false,
-    isLoadedOffer: false,
-    isLoadedNearOffers: false,
-    isLoadedFavoritesOffers: false,
-  },
-  [NameSpace.REVIEWS]: {
-    reviews: [],
-    isReviewSending: false,
-    error: null
-  },
-  [NameSpace.USER]: {
-    authorizationStatus: `UNAUTHORIZED`,
-    email: null
   }
 };
 const testing = () => {};
