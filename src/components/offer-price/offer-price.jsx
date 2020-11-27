@@ -1,17 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as Type from '../../prop-types';
 
-const OfferPrice = ({price}) => {
+const OfferPrice = (props) => {
+  const {price, typeClass} = props;
+
   return (
-    <div className="property__price">
-      <b className="property__price-value">&euro;{price}</b>
-      <span className="property__price-text">&nbsp;night</span>
+    <div className={`${typeClass}__price`}>
+      <b className={`${typeClass}__price-value`}>&euro;{price}</b>
+      <span className={`${typeClass}__price-text`}>&nbsp;night</span>
     </div>
   );
 };
 
 OfferPrice.propTypes = {
-  price: PropTypes.number.isRequired
+  price: Type.OFFER_PRICE.isRequired,
+  typeClass: Type.TYPE_NAME.isRequired,
 };
 
 export default OfferPrice;

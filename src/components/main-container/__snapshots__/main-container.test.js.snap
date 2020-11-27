@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MainContainer render correctly without offers 1`] = `
+Array [
+  <section
+    className="cities__places places"
+  >
+    <h2
+      className="visually-hidden"
+    >
+      Places
+    </h2>
+    <b
+      className="places__found"
+    >
+      10
+       places to stay in 
+      Amsterdam
+    </b>
+    <form
+      action="#"
+      className="places__sorting"
+      method="get"
+    >
+      <span
+        className="places__sorting-caption"
+      >
+        Sort by 
+      </span>
+      <span
+        className="places__sorting-type"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        popular
+        <svg
+          className="places__sorting-arrow"
+          height="4"
+          width="7"
+        >
+          <use
+            xlinkHref="#icon-arrow-select"
+          />
+        </svg>
+      </span>
+      <ul
+        className="places__options places__options--custom "
+      >
+        <li
+          className="places__option places__option--active"
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          Popular
+        </li>
+        <li
+          className="places__option "
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          Price: low to high
+        </li>
+        <li
+          className="places__option "
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          Price: high to low
+        </li>
+        <li
+          className="places__option "
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          Top rated first
+        </li>
+      </ul>
+    </form>
+    <div
+      className="cities__places-list places__list tabs__content"
+    >
+      <div
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "column",
+            "fontSize": "38px",
+            "fontStyle": "oblique",
+            "fontWeight": 700,
+            "justifyContent": "flex-start",
+            "lineHeight": 0.7,
+            "margin": "20px",
+            "padding": "30px",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <h3
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <img
+            alt="logo"
+            height="50"
+            src="/img/logo.svg"
+            style={
+              Object {
+                "marginRight": "20px",
+              }
+            }
+            width="100"
+          />
+          <svg
+            height="100%"
+            version="1.1"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              id="path"
+            >
+              <animate
+                attributeName="d"
+                begin="0s"
+                dur="3s"
+                from="m0,110 h0"
+                repeatCount="indefinite"
+                to="m0,110 h1100"
+              />
+            </path>
+            <text
+              fill="black"
+            >
+              <textPath
+                xlinkHref="#path"
+              >
+                Loading...
+              </textPath>
+            </text>
+          </svg>
+        </h3>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="cities__right-section"
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "column",
+          "fontSize": "38px",
+          "fontStyle": "oblique",
+          "fontWeight": 700,
+          "justifyContent": "flex-start",
+          "lineHeight": 0.7,
+          "margin": "20px",
+          "padding": "30px",
+          "textAlign": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <h3
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <img
+          alt="logo"
+          height="50"
+          src="/img/logo.svg"
+          style={
+            Object {
+              "marginRight": "20px",
+            }
+          }
+          width="100"
+        />
+        <svg
+          height="100%"
+          version="1.1"
+          width="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <path
+            id="path"
+          >
+            <animate
+              attributeName="d"
+              begin="0s"
+              dur="3s"
+              from="m0,110 h0"
+              repeatCount="indefinite"
+              to="m0,110 h1100"
+            />
+          </path>
+          <text
+            fill="black"
+          >
+            <textPath
+              xlinkHref="#path"
+            >
+              Loading...
+            </textPath>
+          </text>
+        </svg>
+      </h3>
+    </div>
+  </div>,
+]
+`;

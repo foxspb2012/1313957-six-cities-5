@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Map render correctly Should Map render correctly with offer and block class name offer-page 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontSize": "38px",
+      "fontStyle": "oblique",
+      "fontWeight": 700,
+      "justifyContent": "flex-start",
+      "lineHeight": 0.7,
+      "margin": "20px",
+      "padding": "30px",
+      "textAlign": "center",
+      "width": "100%",
+    }
+  }
+>
+  <h3
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <img
+      alt="logo"
+      height="50"
+      src="/img/logo.svg"
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }
+      width="100"
+    />
+    <svg
+      height="100%"
+      version="1.1"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <path
+        id="path"
+      >
+        <animate
+          attributeName="d"
+          begin="0s"
+          dur="3s"
+          from="m0,110 h0"
+          repeatCount="indefinite"
+          to="m0,110 h1100"
+        />
+      </path>
+      <text
+        fill="black"
+      >
+        <textPath
+          xlinkHref="#path"
+        >
+          Loading...
+        </textPath>
+      </text>
+    </svg>
+  </h3>
+</div>
+`;
+
+exports[`Should Map render correctly Should Map render correctly with offers and block class name main-page 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontSize": "38px",
+      "fontStyle": "oblique",
+      "fontWeight": 700,
+      "justifyContent": "flex-start",
+      "lineHeight": 0.7,
+      "margin": "20px",
+      "padding": "30px",
+      "textAlign": "center",
+      "width": "100%",
+    }
+  }
+>
+  <h3
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <img
+      alt="logo"
+      height="50"
+      src="/img/logo.svg"
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }
+      width="100"
+    />
+    <svg
+      height="100%"
+      version="1.1"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <path
+        id="path"
+      >
+        <animate
+          attributeName="d"
+          begin="0s"
+          dur="3s"
+          from="m0,110 h0"
+          repeatCount="indefinite"
+          to="m0,110 h1100"
+        />
+      </path>
+      <text
+        fill="black"
+      >
+        <textPath
+          xlinkHref="#path"
+        >
+          Loading...
+        </textPath>
+      </text>
+    </svg>
+  </h3>
+</div>
+`;
+
+exports[`Should Map render correctly Should Map render correctly without offers 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontSize": "38px",
+      "fontStyle": "oblique",
+      "fontWeight": 700,
+      "justifyContent": "flex-start",
+      "lineHeight": 0.7,
+      "margin": "20px",
+      "padding": "30px",
+      "textAlign": "center",
+      "width": "100%",
+    }
+  }
+>
+  <h3
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <img
+      alt="logo"
+      height="50"
+      src="/img/logo.svg"
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }
+      width="100"
+    />
+    <svg
+      height="100%"
+      version="1.1"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <path
+        id="path"
+      >
+        <animate
+          attributeName="d"
+          begin="0s"
+          dur="3s"
+          from="m0,110 h0"
+          repeatCount="indefinite"
+          to="m0,110 h1100"
+        />
+      </path>
+      <text
+        fill="black"
+      >
+        <textPath
+          xlinkHref="#path"
+        >
+          Loading...
+        </textPath>
+      </text>
+    </svg>
+  </h3>
+</div>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferGallery render correctly Should OfferGallery render correctly with photos 1`] = `
+<div
+  className="property__gallery-container container"
+>
+  <div
+    className="property__gallery"
+  />
+</div>
+`;
+
+exports[`Should OfferGallery render correctly Should OfferGallery render correctly without photos 1`] = `
+<div
+  className="property__gallery-container container"
+>
+  <div
+    className="property__gallery"
+  />
+</div>
+`;

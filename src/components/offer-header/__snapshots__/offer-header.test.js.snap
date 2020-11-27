@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferHeader render correctly Should OfferHeader render correctly with isFavorite 1`] = `
+<div
+  className="property__name-wrapper"
+>
+  <h1
+    className="property__name"
+  >
+    Paris
+  </h1>
+  <button
+    className="property__bookmark-button button property__bookmark-button--active"
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      className="place-card__bookmark-icon"
+      height={33}
+      width={31}
+    >
+      <use
+        xlinkHref="#icon-bookmark"
+      />
+    </svg>
+    <span
+      className="visually-hidden"
+    >
+      In bookmarks
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Should OfferHeader render correctly Should OfferHeader render correctly without isFavorite 1`] = `
+<div
+  className="property__name-wrapper"
+>
+  <h1
+    className="property__name"
+  >
+    Paris
+  </h1>
+  <button
+    className="property__bookmark-button button "
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      className="place-card__bookmark-icon"
+      height={33}
+      width={31}
+    >
+      <use
+        xlinkHref="#icon-bookmark"
+      />
+    </svg>
+    <span
+      className="visually-hidden"
+    >
+      To bookmarks
+    </span>
+  </button>
+</div>
+`;

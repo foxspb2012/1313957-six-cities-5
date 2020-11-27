@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferMark render correctly Should OfferMark render correctly offer card typeClass 1`] = `
+<div
+  className="property__mark"
+>
+  <span>
+    Premium
+  </span>
+</div>
+`;
+
+exports[`Should OfferMark render correctly Should OfferMark render correctly offer-page-content card typeClass 1`] = `
+<div
+  className="place-card__mark"
+>
+  <span>
+    Premium
+  </span>
+</div>
+`;

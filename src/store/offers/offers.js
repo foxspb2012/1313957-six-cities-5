@@ -1,5 +1,7 @@
-import {extend} from '../../utils';
-import {ServerURL, ERROR_TIMEOUT} from '../../const';
+import history from '../../history';
+import {ServerURL, ERROR_TIMEOUT, AppRoute} from '../../const';
+import {extend, pushElement, replaceElement, removeElement} from '../../utils';
+import {getOffers, getNearOffers, getFavoriteOffers, getOfferWithId} from './selectors';
 import {convertOfferFromServerFormat, convertOffersFromServerFormat} from '../../adapters';
 
 let errorTimeout;
@@ -19,6 +21,7 @@ const initialState = {
   isLoaded: false,
   isLoadedOffer: false,
   isLoadedNearOffers: false,
+  isLoadedFavoritesOffers: false,
 };
 
 export const ActionType = {
@@ -31,6 +34,7 @@ export const ActionType = {
   CHANGE_LOAD_STATUS: `CHANGE_LOAD_STATUS`,
   CHANGE_LOAD_STATUS_OFFER: `CHANGE_LOAD_STATUS_OFFER`,
   CHANGE_LOAD_STATUS_NEAR_OFFERS: `CHANGE_LOAD_STATUS_NEAR_OFFERS`,
+  CHANGE_LOAD_STATUS_FAVORITES_OFFERS: `CHANGE_LOAD_STATUS_FAVORITES_OFFERS`,
 };
 
 export const ActionCreator = {
@@ -43,6 +47,7 @@ export const ActionCreator = {
   changeLoadStatus: (status) => ({type: ActionType.CHANGE_LOAD_STATUS, payload: status}),
   changeLoadStatusOffer: (status) => ({type: ActionType.CHANGE_LOAD_STATUS_OFFER, payload: status}),
   changeLoadStatusNearOffers: (status) => ({type: ActionType.CHANGE_LOAD_STATUS_NEAR_OFFERS, payload: status}),
+  changeLoadStatusFavoritesOffers: (status) => ({type: ActionType.CHANGE_LOAD_STATUS_FAVORITES_OFFERS, payload: status}),
 };
 
 export const Operation = {
@@ -68,8 +73,45 @@ export const Operation = {
     .catch(() => temporarilySetError(dispatch, `near offers loading error`)),
 
   loadFavoriteOffers: () => (dispatch, getState, api) => api.get(ServerURL.FAVORITES)
-    .then(({data}) => dispatch(ActionCreator.setFavoriteOffers(convertOffersFromServerFormat(data))))
+    .then(({data}) => {
+      dispatch(ActionCreator.setFavoriteOffers(convertOffersFromServerFormat(data)));
+      dispatch(ActionCreator.changeLoadStatusFavoritesOffers(true));
+    })
     .catch(() => temporarilySetError(dispatch, `favorite offers loading error`)),
+
+  toggleFavoriteness: (offerId) => (dispatch, getState, api) => {
+    const oldOffer = getOfferWithId(getState(), offerId);
+    const {isFavorite: oldFavoriteness} = oldOffer;
+    const newFavoriteness = !oldFavoriteness;
+    const newOffer = extend(oldOffer, {isFavorite: newFavoriteness});
+
+    api.post(`${ServerURL.FAVORITES}/${offerId}/${Number(newFavoriteness)}`)
+      .then(() => {
+        const state = getState();
+        const offers = getOffers(state);
+        const nearOffers = getNearOffers(state);
+        const favoriteOffers = getFavoriteOffers(state);
+
+        const finder = ({id}) => id === offerId;
+        const offersIndex = offers.findIndex(finder);
+        const nearOffersIndex = nearOffers.findIndex(finder);
+        const favoriteOffersIndex = favoriteOffers.findIndex(finder);
+
+        dispatch(ActionCreator.setOffers(replaceElement(offers, newOffer, offersIndex)));
+        dispatch(ActionCreator.setOneOffer(newOffer));
+
+        if (nearOffersIndex >= 0) {
+          dispatch(ActionCreator.setNearOffers(replaceElement(nearOffers, newOffer, nearOffersIndex)));
+        }
+
+        if (favoriteOffersIndex >= 0) {
+          dispatch(ActionCreator.setFavoriteOffers(removeElement(favoriteOffers, favoriteOffersIndex)));
+        } else {
+          dispatch(ActionCreator.setFavoriteOffers(pushElement(favoriteOffers, newOffer)));
+        }
+      })
+      .catch(() => history.push(AppRoute.LOGIN));
+  }
 };
 
 export const reducer = (state = initialState, action) => {
@@ -92,6 +134,8 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {isLoadedOffer: action.payload});
     case ActionType.CHANGE_LOAD_STATUS_NEAR_OFFERS:
       return extend(state, {isLoadedNearOffers: action.payload});
+    case ActionType.CHANGE_LOAD_STATUS_FAVORITES_OFFERS:
+      return extend(state, {isLoadedFavoritesOffers: action.payload});
     default:
       return state;
   }

@@ -13,17 +13,25 @@ const containerStyle = {
   color: `#ff0000`,
 };
 
+const titleStyle = {
+  fontSize: `24px`,
+  lineHeight: 1.1667,
+  fontWeight: 700,
+  fontStyle: `oblique`,
+};
+
 const Message = (props) => {
   const {text} = props;
   return (
     <div style={containerStyle}>
+      <h2 style={titleStyle}>Attention</h2>
       <p>{text}</p>
     </div>
   );
 };
 
 Message.propTypes = {
-  text: Type.MESSAGE_TEXT,
+  text: Type.MESSAGE_TEXT.isRequired,
 };
 
 export default Message;

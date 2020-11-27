@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLoad render correctly withLoad render correctly with flag true 1`] = `null`;
+
+exports[`withLoad render correctly withLoad render correctly without flag true 1`] = `null`;

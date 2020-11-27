@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferPrice render correctly Should OfferPrice render correctly offer card typeClass 1`] = `
+<div
+  className="property__price"
+>
+  <b
+    className="property__price-value"
+  >
+    €
+    120
+  </b>
+  <span
+    className="property__price-text"
+  >
+     night
+  </span>
+</div>
+`;
+
+exports[`Should OfferPrice render correctly Should OfferPrice render correctly offer-page-content card typeClass 1`] = `
+<div
+  className="place-card__price"
+>
+  <b
+    className="place-card__price-value"
+  >
+    €
+    120
+  </b>
+  <span
+    className="place-card__price-text"
+  >
+     night
+  </span>
+</div>
+`;

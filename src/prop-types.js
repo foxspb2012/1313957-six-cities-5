@@ -9,25 +9,13 @@ import {
   bool,
   func,
   element,
-  oneOfType
+  oneOfType,
+  node
 } from 'prop-types';
-
-export const ACTIVE_OFFER = oneOfType([number, bool]);
-export const ACTIVE_CITY = string;
-
-export const reviewsPropTypes = shape({
-  id: number.isRequired,
-  date: string.isRequired,
-  text: string.isRequired,
-  rating: number.isRequired,
-  user: shape({
-    name: string.isRequired,
-    avatar: string.isRequired
-  }).isRequired
-});
 
 export const ID = number;
 export const PATH = string;
+export const TYPE_NAME = string;
 export const FLAG = bool;
 export const EXACT = bool;
 export const CHILDREN = element;
@@ -37,6 +25,11 @@ export const EMAIL = string;
 export const PASSWORD = string;
 export const AUTHORIZATION_STATUS = oneOf(Object.values(AuthorizationStatus));
 export const MESSAGE_TEXT = string;
+export const LIST_SORTS = Object.values(SortType);
+
+
+export const ACTIVE_OFFER = oneOfType([number, bool]);
+export const ACTIVE_CITY = string;
 
 export const CITIES_LIST = Object.values(City);
 export const CITY_NAME = oneOf(CITIES_LIST);
@@ -69,7 +62,6 @@ export const REVIEW = shape({
 export const REVIEWS_LIST = arrayOf(REVIEW);
 export const REVIEW_ERROR = string;
 
-export const LIST_SORTS = Object.values(SortType);
 export const RATE = number;
 export const OFFER_IMAGE = string;
 export const OFFER_LOCATION = shape({
@@ -110,4 +102,14 @@ export const OFFER = shape({
   rating: RATE,
   type: OFFER_TYPE,
 });
+
+export const CITY_TO_OFFERS = shape({
+  [string]: arrayOf(OFFER),
+});
+
 export const OFFERS_LIST = arrayOf(OFFER);
+export const FAVORITES_OFFERS = arrayOf(arrayOf(oneOfType([string, OFFERS_LIST])));
+
+export const MOCK_COMPONENT = oneOfType([arrayOf(node), node
+]);
+

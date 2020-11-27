@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import FavoritesCard from '../favorites-card/favorites-card';
+import OfferList, {OffersListType} from '../offer-list/offer-list';
+import * as Type from '../../prop-types';
 
 const FavoritesItem = (props) => {
-  const {сityOffers, city} = props;
+  const {сityOffers, city, isLoadedFavoritesOffers} = props;
 
   return (
     <li className="favorites__locations-items">
@@ -15,19 +15,19 @@ const FavoritesItem = (props) => {
         </div>
       </div>
       <div className="favorites__places">
-        {сityOffers.map((card, index) => (
-          <FavoritesCard
-            key={`favorites-card-${index}`}
-            offer={card}/>
-        ))}
+        <OfferList
+          typeClass={OffersListType.FAVORITES}
+          offers={сityOffers}
+          isLoaded={isLoadedFavoritesOffers}/>
       </div>
     </li>
   );
 };
 
 FavoritesItem.propTypes = {
-  city: PropTypes.string.isRequired,
-  сityOffers: PropTypes.array.isRequired
+  city: Type.CITY_NAME,
+  сityOffers: Type.OFFERS_LIST,
+  isLoadedFavoritesOffers: Type.FLAG,
 };
 
 

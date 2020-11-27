@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {EMPTY_CLASS} from '../../const';
 import * as Type from '../../prop-types';
 import Header from '../../components/header/header';
-import NoOffers from '../../components/no-places/no-places';
+import NoPlaces from '../../components/no-places/no-places';
 import CitiesList from '../../components/cities-list/cities-list';
 import {getFilteredAndSortedOffers} from '../../store/offers/selectors';
 import MainContainer from '../../components/main-container/main-container';
@@ -17,7 +17,7 @@ const MainPage = ({offers}) => {
         <CitiesList/>
         <div className="cities">
           <div className={`cities__places-container ${!offers.length ? EMPTY_CLASS.CITIES : ``} container`}>
-            {offers.length ? <MainContainer/> : <NoOffers/>}
+            {offers.length ? <MainContainer/> : <NoPlaces/>}
           </div>
         </div>
       </main>

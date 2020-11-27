@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Message render correctly Should Message render correctly with text 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "color": "#ff0000",
+      "display": "flex",
+      "flexDirection": "column",
+      "justifyContent": "flex-start",
+      "margin": "20px",
+      "padding": "20px",
+      "textAlign": "center",
+      "width": "100%",
+    }
+  }
+>
+  <h2
+    style={
+      Object {
+        "fontSize": "24px",
+        "fontStyle": "oblique",
+        "fontWeight": 700,
+        "lineHeight": 1.1667,
+      }
+    }
+  >
+    Attention
+  </h2>
+  <p>
+    Text
+  </p>
+</div>
+`;

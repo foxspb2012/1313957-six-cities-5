@@ -3,14 +3,35 @@ import * as Type from '../../prop-types';
 import {withLoad} from '../../hocs/with-load';
 import OfferCard from '../offer-card/offer-card';
 
-const OfferList = ({offers, blockClassName}) => {
+const BASE_CLASS = `places__list`;
+const OffersListType = {
+  MAIN: `MAIN`,
+  NEAR: `NEAR`,
+  FAVORITES: `FAVORITES`,
+};
+
+const getClassName = (type) => {
+  switch (type) {
+    case OffersListType.MAIN:
+      return `${BASE_CLASS} cities__places-list tabs__content`;
+    case OffersListType.NEAR:
+      return `${BASE_CLASS} near-places__list`;
+    case OffersListType.FAVORITES:
+      return `favorites__places`;
+    default:
+      return BASE_CLASS;
+  }
+};
+
+const OfferList = ({typeClass, offers = []}) => {
 
   return (
-    <div className={`places__list ${blockClassName}`}>
+    <div className={getClassName(typeClass)}>
       {offers.map((offer) => (
         <OfferCard
           key={offer.id}
-          {...offer}
+          offer={offer}
+          typeClass={typeClass}
         />
       ))}
     </div>
@@ -18,8 +39,9 @@ const OfferList = ({offers, blockClassName}) => {
 };
 
 OfferList.propTypes = {
+  typeClass: Type.TYPE_NAME.isRequired,
   offers: Type.OFFERS_LIST,
-  blockClassName: Type.BLOCK_CLASS_NAME,
 };
 
+export {OffersListType};
 export default withLoad(OfferList);

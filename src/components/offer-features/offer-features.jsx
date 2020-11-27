@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as Type from '../../prop-types';
 import {upperCaseFirstLetter} from '../../utils';
 
 
@@ -20,9 +20,9 @@ const OfferFeatures = ({type, bedroomAmount, guestAmount}) => {
 };
 
 OfferFeatures.propTypes = {
-  type: PropTypes.string.isRequired,
-  bedroomAmount: PropTypes.number.isRequired,
-  guestAmount: PropTypes.number.isRequired
+  type: Type.OFFER_TYPE.isRequired,
+  bedroomAmount: Type.OFFER_BEDROOMS_COUNT,
+  guestAmount: Type.OFFER_GUEST_COUNT,
 };
 
 

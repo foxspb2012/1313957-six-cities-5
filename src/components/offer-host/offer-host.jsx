@@ -29,8 +29,8 @@ const OfferHost = ({host, description}) => {
 };
 
 OfferHost.propTypes = {
-  host: Type.OFFER_HOST,
-  description: Type.OFFER_DESCRIPTION,
+  host: Type.OFFER_HOST.isRequired,
+  description: Type.OFFER_DESCRIPTION.isRequired,
 };
 
 export default OfferHost;

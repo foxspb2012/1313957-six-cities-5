@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {SortType} from '../../const';
 import {upperCaseFirstLetter} from '../../utils';
-import withActiveState from '../../hocs/with-active-state';
 import {getActiveSortType} from '../../store/app/selectors';
 import {ActionCreator as AppActionCreator} from '../../store/app/app';
+import withActiveState from '../../hocs/with-active-state';
 
-const Sort = ({isActive, onActiveStateChange, activeType, onTypeChange}) => (
+const SortingList = ({isActive, onActiveStateChange, activeType, onTypeChange}) => (
   <form className="places__sorting" action="#" method="get">
     <span className="places__sorting-caption">Sort by </span>
     <span className="places__sorting-type" tabIndex={0} onClick={onActiveStateChange}>
@@ -30,6 +30,13 @@ const Sort = ({isActive, onActiveStateChange, activeType, onTypeChange}) => (
   </form>
 );
 
+SortingList.propTypes = {
+  isActive: PropTypes.bool,
+  onActiveStateChange: PropTypes.func,
+  activeType: PropTypes.string,
+  onTypeChange: PropTypes.func,
+};
+
 const mapStateToProps = (state) => ({
   activeType: getActiveSortType(state),
 });
@@ -38,12 +45,5 @@ const mapDispatchToProps = (dispatch) => ({
   onTypeChange: (sortType) => dispatch(AppActionCreator.setActiveSortType(sortType)),
 });
 
-Sort.propTypes = {
-  isActive: PropTypes.bool,
-  onActiveStateChange: PropTypes.func,
-  activeType: PropTypes.string,
-  onTypeChange: PropTypes.func
-};
-
-export {Sort};
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveState(Sort));
+export {SortingList};
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveState(SortingList));

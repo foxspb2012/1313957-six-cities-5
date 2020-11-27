@@ -1,5 +1,5 @@
 import React from 'react';
-import {OFFER_IMAGES} from '../../prop-types';
+import * as Type from '../../prop-types';
 
 const OfferGallery = ({photos = []}) => {
   return (
@@ -16,7 +16,7 @@ const OfferGallery = ({photos = []}) => {
 };
 
 OfferGallery.propTypes = {
-  photos: OFFER_IMAGES,
+  photos: Type.OFFER_IMAGES,
 };
 
 export default OfferGallery;
