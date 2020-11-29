@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`withAuthorization render correctly withAuthorization render correctly with authorization 1`] = `null`;
-
-exports[`withAuthorization render correctly withAuthorization render correctly without authorization 1`] = `null`;

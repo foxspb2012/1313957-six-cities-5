@@ -1,15 +1,21 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import * as Type from '../../../prop-types';
 import ErrorMessage from '../../message/message';
 import {TextLengthLimit, STARS} from '../../../const';
-import withReviewData from '../../../hocs/with-review-data';
 import {Operation as ReviewsOperation} from '../../../store/reviews/reviews';
 import {getReviewSendingStatus, getError} from '../../../store/reviews/selectors';
 
 const ReviewForm = (props) => {
-  const {disabled, error, text, rating: activeRating, onTextChange, onRatingChange, onReviewFormSubmit, onFormValuesReset} = props;
+  const {disabled, error, onReviewFormSubmit, onFormValuesReset} = props;
+
+  const [dataReview, setUpdateReview] = useState({
+    text: ``,
+    activeRating: null
+  });
+
+  const {text, activeRating} = dataReview;
 
   const stars = STARS.map(({value, title}, index) => (
     <Fragment key={`star-review-${index}`}>
@@ -23,7 +29,11 @@ const ReviewForm = (props) => {
         checked={value === activeRating}
         required
         disabled={disabled}
-        onChange={() => onRatingChange(value)}/>
+        onChange={() => {
+          setUpdateReview(() => ({
+              activeRating: value,
+          }))
+        }}/>
 
       <label
         className="reviews__rating-label form__rating-label"
@@ -64,7 +74,12 @@ const ReviewForm = (props) => {
         id="text"
         required
         disabled={disabled}
-        onChange={(evt) => onTextChange(evt.target.value)}/>
+        onChange={(value) => {
+          setUpdateReview((initialState) => ({
+              ...initialState,
+              text: value,
+          }))
+        }}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay
@@ -103,4 +118,4 @@ const mapDispatchToProps = (dispatch, {match: {params: {offerId}}}) => ({
 });
 
 export {ReviewForm};
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withReviewData(ReviewForm)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewForm));

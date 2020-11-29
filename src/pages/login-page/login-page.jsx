@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import * as Type from '../../prop-types';
 import Header from '../../components/header/header';
 import {getActiveCity} from '../../store/app/selectors';
-import withAuthorization from '../../hocs/with-authorization';
 import {Operation as UserOperation} from '../../store/user/user';
 
 const LoginPage = (props) => {
 
-  const {email, activeCity, password, onEmailChange, onPasswordChange, onLoginPageSubmit} = props;
+  const {activeCity, onLoginPageSubmit} = props;
+
+  const [dataAuth, setUpdate] = useState({
+    email: ``,
+    password: ``
+  });
+
+  const {email, password} = dataAuth;
+
+  const onEmailChange = () => {
+    setUpdate(email);
+  };
+
+  const onPasswordChange = () => {
+    setUpdate(password);
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -87,4 +101,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export {LoginPage};
-export default connect(mapStateToProps, mapDispatchToProps)(withAuthorization(LoginPage));
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
