@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createStore, compose, applyMiddleware} from 'redux';
 import {AuthorizationStatus} from './const';
-import App from './app/app';
+import App from './components/app/app';
 import createAPI from './api';
 import reducer from './store/reducer';
 import {Operation as OffersOperation} from './store/offers/offers';
